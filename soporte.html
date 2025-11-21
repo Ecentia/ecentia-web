@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte - Ecentia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos del formulario (Grid Layout) */
+        .support-container { max-width: 900px; width: 100%; background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color); margin-top: 20px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { margin-bottom: 5px; text-align: left; display: flex; flex-direction: column; }
+        .full-width { grid-column: span 2; }
+        .form-group label { margin-bottom: 8px; color: var(--text-muted); font-size: 0.9rem; margin-left: 5px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-color); font-family: 'Poppins', sans-serif; transition: border-color 0.3s, box-shadow 0.3s; }
+        .form-group textarea { height: 150px; resize: vertical; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1); }
+        .checkbox-group { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; text-align: left; font-size: 0.9rem; color: var(--text-muted); }
+        .checkbox-group input[type="checkbox"] { width: auto; margin-top: 4px; accent-color: var(--accent-color); cursor: pointer; }
+        .checkbox-group a { color: var(--accent-color); text-decoration: none; }
+        .submit-container { margin-top: 20px; }
+        .submit-btn { background: var(--accent-color); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px; width: 100%; justify-content: center; }
+        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px -10px rgba(168, 85, 247, 0.5); background: #9333ea; }
+        .btn-loading { opacity: 0.7; cursor: wait; }
+        .btn-success { background-color: #10b981 !important; pointer-events: none; }
+        .btn-error { background-color: #ef4444 !important; }
+        @media (max-width: 768px) { .support-container { padding: 20px; } .form-grid { grid-template-columns: 1fr; gap: 15px; } .full-width { grid-column: span 1; } }
+    </style>
+</head>
+<body>
+
+    <header class="fade-in">
+        <div class="logo">
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <h3>Ecentia<span class="logo-dot">.</span></h3>
+            </a>
+        </div>
+        <div class="header-actions">
+            <button id="theme-toggle" class="theme-toggle-btn"><i class="fas fa-sun"></i></button>
+            <a href="/" class="btn-ghost">Volver al Inicio</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="badge fade-in">CENTRO DE AYUDA</div>
+        <h1 class="fade-in" style="font-size: 3rem;">Contacto</h1>
+        
+        <div class="support-container fade-in">
+            <form id="support-form" action="https://formspree.io/f/xnnwwebz" method="POST">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nombre">Nombre*</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="+34 ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="empresa">Empresa o proyecto</label>
+                        <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa o proyecto">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="mensaje">Mensaje*</label>
+                        <textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+                    </div>
+                    <div class="full-width" style="margin-top: 10px;">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy" style="margin:0; cursor:pointer;">He leído y acepto la <a href="politica-privacidad.html" target="_blank">Política de privacidad</a></label>
+                        </div>
+                        </div>
+                    <div class="submit-container full-width">
+                        <button type="submit" class="submit-btn" id="submit-btn"><span>ENVIAR</span> <i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </form>
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    ¿Prefieres escribirnos directamente? <br>
+                    <a href="mailto:ecentiaseo@gmail.com" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">ecentiaseo@gmail.com</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-col">
+            <div>© 2025 Ecentia Marketing</div>
+            <div class="legal-links">
+                <a href="aviso-legal.html">Aviso Legal</a> |
+                <a href="politica-privacidad.html">Política de Privacidad</a> |
+                <a href="politica-cookies.html">Política de Cookies</a>
+            </div>
+        </div>
+        <div class="footer-info">
+            <span><i class="fas fa-map-marker-alt"></i>Sevilla, España</span>
+        </div>
+    </footer>
+
+    <div id="cookie-banner">
+        <div class="cookie-title">
+            <i class="fas fa-cookie-bite" style="color: var(--accent-color);"></i> Cookies
+        </div>
+        <p class="cookie-text">
+            Usamos cookies para mejorar tu experiencia. Al navegar, aceptas nuestra <a href="politica-cookies.html">Política de Cookies</a>.
+        </p>
+        <div class="cookie-buttons">
+            <button id="deny-cookies" class="btn-cookie-deny">Rechazar</button>
+            <button id="accept-cookies" class="btn-cookie-accept">Aceptar</button>
+        </div>
+    </div>
+
+    <script src="animations.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Lógica específica formulario contacto
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById("support-form");
+            const btn = document.getElementById("submit-btn");
+            const originalBtnContent = btn.innerHTML;
+            async function handleSubmit(event) {
+                event.preventDefault();
+                const data = new FormData(event.target);
+                btn.innerHTML = '<span>Enviando...</span> <i class="fas fa-spinner fa-spin"></i>';
+                btn.disabled = true;
+                btn.classList.add('btn-loading');
+                fetch(event.target.action, { method: form.method, body: data, headers: { 'Accept': 'application/json' } })
+                .then(response => {
+                    if (response.ok) {
+                        btn.innerHTML = '<span>¡Mensaje Enviado!</span> <i class="fas fa-check"></i>';
+                        btn.classList.remove('btn-loading'); btn.classList.add('btn-success'); form.reset();
+                    } else {
+                        btn.innerHTML = '<span>Error al enviar</span> <i class="fas fa-times"></i>';
+                        btn.classList.remove('btn-loading'); btn.classList.add('btn-error');
+                    }
+                }).catch(error => {
+                    btn.innerHTML = '<span>Fallo de conexión</span> <i class="fas fa-wifi"></i>';
+                    btn.classList.remove('btn-loading'); btn.classList.add('btn-error');
+                }).finally(() => {
+                    if (btn.classList.contains('btn-error')) { setTimeout(() => { btn.innerHTML = originalBtnContent; btn.classList.remove('btn-error'); btn.disabled = false; }, 4000); }
+                    if (btn.classList.contains('btn-success')) { setTimeout(() => { btn.innerHTML = originalBtnContent; btn.classList.remove('btn-success'); btn.disabled = false; }, 5000); }
+                });
+            }
+            form.addEventListener("submit", handleSubmit);
+        });
+    </script>
+</body>
+</html>

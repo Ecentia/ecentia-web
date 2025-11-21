@@ -12,14 +12,17 @@
 
     <header class="fade-in">
         <div class="logo">
-            <h3>Ecentia<span class="logo-dot">.</span></h3>
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <h3>Ecentia<span class="logo-dot">.</span></h3>
+            </a>
         </div>
         <div class="header-actions">
             <button id="theme-toggle" class="theme-toggle-btn" title="Cambiar tema" aria-label="Cambiar tema modo claro oscuro">
                 <i class="fas fa-sun"></i>
             </button>
             
-            <a href="#" class="btn-ghost">Soporte</a>
+            <a href="soporte.html" class="btn-ghost">Soporte</a>
+            
             <a href="mailto:ecentiaseo@gmail.com" class="btn-primary">Contáctanos</a>
         </div>
     </header>
@@ -113,15 +116,33 @@
             </div>
         </div>
     </div>
-
-
     <footer>
-        <div>© 2025 Ecentia Marketing</div>
-        <div class="footer-info">
-            <a href="mailto:ecentiaseo@gmail.com"><i class="far fa-envelope"></i>ecentiaseo@gmail.com</a>
-            <span><i class="fas fa-map-marker-alt"></i>Sevilla, España</span>
+            <div class="footer-col">
+                <div>© 2025 Ecentia Marketing</div>
+                <div class="legal-links">
+                    <a href="aviso-legal.html">Aviso Legal</a> |
+                    <a href="politica-privacidad.html">Política de Privacidad</a> |
+                    <a href="politica-cookies.html">Política de Cookies</a>
+                </div>
+            </div>
+            <div class="footer-info">
+                <a href="mailto:ecentiaseo@gmail.com"><i class="far fa-envelope"></i>ecentiaseo@gmail.com</a>
+                <span><i class="fas fa-map-marker-alt"></i>Sevilla, España</span>
+            </div>
+        </footer>
+
+    <div id="cookie-banner">
+        <div class="cookie-title">
+            <i class="fas fa-cookie-bite" style="color: var(--accent-color);"></i> Cookies
         </div>
-    </footer>
+        <p class="cookie-text">
+            Usamos cookies para mejorar tu experiencia. Al navegar, aceptas nuestra <a href="politica-cookies.html">Política de Cookies</a>.
+        </p>
+        <div class="cookie-buttons">
+            <button id="deny-cookies" class="btn-cookie-deny">Rechazar</button>
+            <button id="accept-cookies" class="btn-cookie-accept">Aceptar</button>
+        </div>
+    </div>
 
     <script src="animations.js"></script>
     <script src="script.js"></script>
