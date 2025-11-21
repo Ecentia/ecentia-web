@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soporte - Ecentia</title>
+    
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -30,11 +33,10 @@
     </style>
 </head>
 <body>
-
     <header class="fade-in">
         <div class="logo">
-            <a href="/" style="text-decoration: none; color: inherit;">
-                <h3>Ecentia<span class="logo-dot">.</span></h3>
+            <a href="/" style="text-decoration: none; display: flex; align-items: center;">
+                <img src="assets/logo.png" alt="Ecentia Marketing Logo" class="logo-img">
             </a>
         </div>
         <div class="header-actions">
@@ -42,89 +44,42 @@
             <a href="/" class="btn-ghost">Volver al Inicio</a>
         </div>
     </header>
-
     <main>
         <div class="badge fade-in">CENTRO DE AYUDA</div>
         <h1 class="fade-in" style="font-size: 3rem;">Contacto</h1>
-        
         <div class="support-container fade-in">
             <form id="support-form" action="https://formspree.io/f/xnnwwebz" method="POST">
                 <div class="form-grid">
-                    <div class="form-group">
-                        <label for="nombre">Nombre*</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="apellidos">Apellidos</label>
-                        <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos">
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono" name="telefono" placeholder="+34 ...">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email*</label>
-                        <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="empresa">Empresa o proyecto</label>
-                        <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa o proyecto">
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="mensaje">Mensaje*</label>
-                        <textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
-                    </div>
+                    <div class="form-group"><label for="nombre">Nombre*</label><input type="text" id="nombre" name="nombre" required placeholder="Nombre"></div>
+                    <div class="form-group"><label for="apellidos">Apellidos</label><input type="text" id="apellidos" name="apellidos" placeholder="Apellidos"></div>
+                    <div class="form-group"><label for="telefono">Teléfono</label><input type="tel" id="telefono" name="telefono" placeholder="+34 ..."></div>
+                    <div class="form-group"><label for="email">Email*</label><input type="email" id="email" name="email" required placeholder="ejemplo@correo.com"></div>
+                    <div class="form-group full-width"><label for="empresa">Empresa o proyecto</label><input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa o proyecto"></div>
+                    <div class="form-group full-width"><label for="mensaje">Mensaje*</label><textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos en qué podemos ayudarte..."></textarea></div>
                     <div class="full-width" style="margin-top: 10px;">
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="privacy" name="privacy" required>
-                            <label for="privacy" style="margin:0; cursor:pointer;">He leído y acepto la <a href="politica-privacidad.html" target="_blank">Política de privacidad</a></label>
-                        </div>
-                        </div>
-                    <div class="submit-container full-width">
-                        <button type="submit" class="submit-btn" id="submit-btn"><span>ENVIAR</span> <i class="fas fa-paper-plane"></i></button>
+                        <div class="checkbox-group"><input type="checkbox" id="privacy" name="privacy" required><label for="privacy" style="margin:0; cursor:pointer;">He leído y acepto la <a href="politica-privacidad.html" target="_blank">Política de privacidad</a></label></div>
                     </div>
+                    <div class="submit-container full-width"><button type="submit" class="submit-btn" id="submit-btn"><span>ENVIAR</span> <i class="fas fa-paper-plane"></i></button></div>
                 </div>
             </form>
-            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
-                <p style="color: var(--text-muted); font-size: 0.9rem;">
-                    ¿Prefieres escribirnos directamente? <br>
-                    <a href="mailto:ecentiaseo@gmail.com" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">ecentiaseo@gmail.com</a>
-                </p>
-            </div>
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);"><p style="color: var(--text-muted); font-size: 0.9rem;">¿Prefieres escribirnos directamente? <br><a href="mailto:ecentiaseo@gmail.com" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">ecentiaseo@gmail.com</a></p></div>
         </div>
     </main>
-
     <footer>
         <div class="footer-col">
             <div>© 2025 Ecentia Marketing</div>
-            <div class="legal-links">
-                <a href="aviso-legal.html">Aviso Legal</a> |
-                <a href="politica-privacidad.html">Política de Privacidad</a> |
-                <a href="politica-cookies.html">Política de Cookies</a>
-            </div>
+            <div class="legal-links"><a href="aviso-legal.html">Aviso Legal</a> | <a href="politica-privacidad.html">Política de Privacidad</a> | <a href="politica-cookies.html">Política de Cookies</a></div>
         </div>
-        <div class="footer-info">
-            <span><i class="fas fa-map-marker-alt"></i>Sevilla, España</span>
-        </div>
+        <div class="footer-info"><span><i class="fas fa-map-marker-alt"></i>Sevilla, España</span></div>
     </footer>
-
     <div id="cookie-banner">
-        <div class="cookie-title">
-            <i class="fas fa-cookie-bite" style="color: var(--accent-color);"></i> Cookies
-        </div>
-        <p class="cookie-text">
-            Usamos cookies para mejorar tu experiencia. Al navegar, aceptas nuestra <a href="politica-cookies.html">Política de Cookies</a>.
-        </p>
-        <div class="cookie-buttons">
-            <button id="deny-cookies" class="btn-cookie-deny">Rechazar</button>
-            <button id="accept-cookies" class="btn-cookie-accept">Aceptar</button>
-        </div>
+        <div class="cookie-title"><i class="fas fa-cookie-bite" style="color: var(--accent-color);"></i> Cookies</div>
+        <p class="cookie-text">Usamos cookies para mejorar tu experiencia. Al navegar, aceptas nuestra <a href="politica-cookies.html">Política de Cookies</a>.</p>
+        <div class="cookie-buttons"><button id="deny-cookies" class="btn-cookie-deny">Rechazar</button><button id="accept-cookies" class="btn-cookie-accept">Aceptar</button></div>
     </div>
-
     <script src="animations.js"></script>
     <script src="script.js"></script>
     <script>
-        // Lógica específica formulario contacto
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById("support-form");
             const btn = document.getElementById("submit-btn");
@@ -133,21 +88,13 @@
                 event.preventDefault();
                 const data = new FormData(event.target);
                 btn.innerHTML = '<span>Enviando...</span> <i class="fas fa-spinner fa-spin"></i>';
-                btn.disabled = true;
-                btn.classList.add('btn-loading');
+                btn.disabled = true; btn.classList.add('btn-loading');
                 fetch(event.target.action, { method: form.method, body: data, headers: { 'Accept': 'application/json' } })
                 .then(response => {
-                    if (response.ok) {
-                        btn.innerHTML = '<span>¡Mensaje Enviado!</span> <i class="fas fa-check"></i>';
-                        btn.classList.remove('btn-loading'); btn.classList.add('btn-success'); form.reset();
-                    } else {
-                        btn.innerHTML = '<span>Error al enviar</span> <i class="fas fa-times"></i>';
-                        btn.classList.remove('btn-loading'); btn.classList.add('btn-error');
-                    }
-                }).catch(error => {
-                    btn.innerHTML = '<span>Fallo de conexión</span> <i class="fas fa-wifi"></i>';
-                    btn.classList.remove('btn-loading'); btn.classList.add('btn-error');
-                }).finally(() => {
+                    if (response.ok) { btn.innerHTML = '<span>¡Mensaje Enviado!</span> <i class="fas fa-check"></i>'; btn.classList.remove('btn-loading'); btn.classList.add('btn-success'); form.reset(); } 
+                    else { btn.innerHTML = '<span>Error al enviar</span> <i class="fas fa-times"></i>'; btn.classList.remove('btn-loading'); btn.classList.add('btn-error'); }
+                }).catch(error => { btn.innerHTML = '<span>Fallo de conexión</span> <i class="fas fa-wifi"></i>'; btn.classList.remove('btn-loading'); btn.classList.add('btn-error'); })
+                .finally(() => {
                     if (btn.classList.contains('btn-error')) { setTimeout(() => { btn.innerHTML = originalBtnContent; btn.classList.remove('btn-error'); btn.disabled = false; }, 4000); }
                     if (btn.classList.contains('btn-success')) { setTimeout(() => { btn.innerHTML = originalBtnContent; btn.classList.remove('btn-success'); btn.disabled = false; }, 5000); }
                 });
