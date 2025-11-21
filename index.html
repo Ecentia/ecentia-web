@@ -4,399 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecentia - Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            /* --- Variables por defecto (Modo Oscuro) --- */
-            --bg-color: #050510;
-            --card-bg: rgba(20, 20, 40, 0.6);
-            --primary-gradient: linear-gradient(90deg, #a855f7, #6366f1);
-            --text-color: #ffffff;
-            --text-muted: #9ca3af;
-            --glow-color: rgba(124, 58, 237, 0.25);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --input-bg: rgba(255, 255, 255, 0.03);
-        }
-
-        /* --- Variables para Modo Claro --- */
-        body.light-mode {
-            --bg-color: #f3f4f6;
-            --card-bg: rgba(255, 255, 255, 0.8);
-            --text-color: #1f2937;
-            --text-muted: #6b7280;
-            --glow-color: rgba(124, 58, 237, 0.10);
-            --border-color: rgba(0, 0, 0, 0.05);
-            --input-bg: rgba(0, 0, 0, 0.03);
-        }
-
-        /* Ajustes específicos Modo Claro */
-        body.light-mode h1 {
-            background: linear-gradient(to bottom, #111827, #4b5563);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        body.light-mode .btn-primary {
-             background: #a855f7;
-             color: white;
-             border: none;
-        }
-
-        body.light-mode .btn-primary:hover {
-             background: #9333ea;
-        }
-
-        /* Color del punto en Modo Claro */
-        body.light-mode .logo-dot {
-            color: #9333ea;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            position: relative;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Efecto de brillo de fondo */
-        body::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 600px;
-            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-            transition: background 0.3s ease;
-        }
-
-        /* --- Header --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            width: 100%;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-dot {
-            transition: color 0.3s ease;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .theme-toggle-btn {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            font-size: 1.1rem;
-        }
-        
-        .theme-toggle-btn:hover {
-            background: var(--card-bg);
-        }
-
-        .btn-ghost {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .btn-ghost:hover {
-            color: var(--text-color);
-        }
-
-        .btn-primary {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 20px;
-            border-radius: 50px;
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-
-        .btn-primary:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* --- Main Hero --- */
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .badge {
-            background: rgba(168, 85, 247, 0.15);
-            color: #d8b4fe;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-        }
-        
-        body.light-mode .badge {
-            color: #a855f7;
-            background: rgba(168, 85, 247, 0.1);
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(to bottom, #ffffff, #cbd5e1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        h1 span {
-            display: block;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-text {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        /* --- Countdown --- */
-        .countdown-container {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .time-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .separator {
-            font-size: 2rem;
-            color: var(--text-muted);
-            margin-top: -5px;
-        }
-
-        /* --- Newsletter Form --- */
-        .newsletter {
-            background: var(--input-bg);
-            border: 1px solid var(--border-color);
-            padding: 5px;
-            border-radius: 50px;
-            display: flex;
-            width: 100%;
-            max-width: 450px;
-            margin-bottom: 60px;
-            box-shadow: 0 0 20px rgba(124, 58, 237, 0.1);
-        }
-
-        .newsletter input {
-            background: transparent;
-            border: none;
-            padding: 15px 25px;
-            color: var(--text-color);
-            flex: 1;
-            outline: none;
-        }
-
-        .newsletter button {
-            background: white;
-            color: black;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.3s;
-            min-width: 150px; /* Asegura que el botón no cambie mucho de tamaño con el texto */
-        }
-        
-        body.light-mode .newsletter button {
-            background: #1f2937;
-            color: white;
-        }
-
-        .newsletter button:hover {
-            transform: scale(1.05);
-        }
-
-        /* Estilo para mensaje de éxito/error en el botón */
-        .btn-success {
-            background-color: #22c55e !important; /* Verde */
-            color: white !important;
-        }
-        .btn-error {
-            background-color: #ef4444 !important; /* Rojo */
-            color: white !important;
-        }
-
-        /* --- Services Grid --- */
-        .services-section {
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 20px;
-        }
-        
-        .section-title {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            letter-spacing: 1.5px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: left;
-            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-            backdrop-filter: blur(10px);
-        }
-        
-        body.light-mode .card {
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(168, 85, 247, 0.4);
-        }
-
-        .card-icon {
-            color: #a855f7;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            background: rgba(168, 85, 247, 0.1);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-        }
-
-        .card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* --- Footer --- */
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-
-        .footer-info {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .footer-info i {
-            margin-right: 5px;
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            header { padding: 20px; }
-            .countdown-container { gap: 15px; }
-            .number { font-size: 1.8rem; }
-            footer { flex-direction: column; align-items: center; gap: 15px; }
-            .footer-info { flex-direction: column; align-items: center; gap: 10px; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header>
+    <header class="fade-in">
         <div class="logo">
             <h3>Ecentia<span class="logo-dot">.</span></h3>
         </div>
         <div class="header-actions">
-            <button id="theme-toggle" class="theme-toggle-btn" title="Cambiar tema">
+            <button id="theme-toggle" class="theme-toggle-btn" title="Cambiar tema" aria-label="Cambiar tema modo claro oscuro">
                 <i class="fas fa-sun"></i>
             </button>
             
@@ -406,17 +25,17 @@
     </header>
 
     <main>
-        <div class="badge">WEB EN CONSTRUCCIÓN</div>
+        <div class="badge fade-in">WEB EN CONSTRUCCIÓN</div>
         
-        <h1>Diseñamos el <br><span>Futuro Digital</span></h1>
+        <h1 class="fade-in">Diseñamos el <br><span>Futuro Digital</span></h1>
         
-        <p class="hero-text">
+        <p class="hero-text fade-in">
             En <strong>Ecentia</strong> fusionamos estrategia, diseño y tecnología. Estamos ultimando los detalles de nuestra nueva plataforma para marcas que buscan trascender.
         </p>
 
-        <div class="countdown-container" id="countdown">
+        <div class="countdown-container fade-in" id="countdown">
             <div class="time-box">
-                <span class="number" id="days">14</span>
+                <span class="number" id="days">00</span>
                 <span class="label">Días</span>
             </div>
             <div class="separator">:</div>
@@ -426,179 +45,86 @@
             </div>
             <div class="separator">:</div>
             <div class="time-box">
-                <span class="number" id="mins">59</span>
+                <span class="number" id="mins">00</span>
                 <span class="label">Mins</span>
             </div>
             <div class="separator">:</div>
             <div class="time-box">
-                <span class="number" id="secs">14</span>
+                <span class="number" id="secs">00</span>
                 <span class="label">Segs</span>
             </div>
         </div>
 
-        <form id="newsletter-form" action="https://formspree.io/f/xnnwwebz" method="POST" class="newsletter">
-            <input type="email" name="email" placeholder="Introduce tu email" required>
-            <button type="submit" id="submit-btn">Notificarme <i class="fas fa-bolt"></i></button>
+        <form id="newsletter-form" action="https://formspree.io/f/xnnwwebz" method="POST" class="newsletter fade-in">
+            <input type="email" name="email" placeholder="Introduce tu email" required autocomplete="email">
+            <button type="submit" id="submit-btn">
+                <span>Suscribirme</span>
+                <i class="fas fa-bolt"></i>
+            </button>
         </form>
+    </main>
+    
+    <div class="text-banner-section fade-in">
+        <div class="marquee-text">
+            <div class="marquee-text-content scroll-text">
+                ESTRATEGIA DIGITAL   DISEÑO QUE IMPACTA   CRECIMIENTO EXPONENCIAL   INNOVACIÓN TECNOLÓGICA   MARCAS CON PROPÓSITO   EXPERIENCIAS INOLVIDABLES   
+            </div>
+            <div class="marquee-text-content scroll-text" aria-hidden="true">
+                ESTRATEGIA DIGITAL   DISEÑO QUE IMPACTA   CRECIMIENTO EXPONENCIAL   INNOVACIÓN TECNOLÓGICA   MARCAS CON PROPÓSITO   EXPERIENCIAS INOLVIDABLES   
+            </div>
+        </div>
+    </div>
 
-        <div class="services-section">
-            <div class="section-title">Nuestras áreas de Expertise</div>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-globe"></i></div>
-                    <h3>Diseño Web & UX/UI</h3>
-                    <p>Desarrollo de sitios web de alto impacto visual, funcionales y centrados en el usuario.</p>
+    <div class="impressive-services-section fade-in">
+        <div class="section-header center-text">
+            <h2 class="section-title-large">Lo que Hacemos <br><span>Mejor que Nadie</span></h2>
+            <p class="section-subtitle">Soluciones digitales integrales para impulsar tu negocio al siguiente nivel.</p>
+        </div>
+
+        <div class="services-showcase">
+            <div class="service-block service-left">
+                <div class="service-content">
+                    <h3>Desarrollo Web a Medida</h3>
+                    <p>Creamos páginas web únicas, rápidas y optimizadas para móviles. No usamos plantillas genéricas; diseñamos la plataforma perfecta para tu marca y tus objetivos de conversión.</p>
                 </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
-                    <h3>Marketing Digital</h3>
-                    <p>Estrategias 360° para escalar tu negocio y potenciar tus ventas online.</p>
+                <div class="service-visual">
+                    <i class="fas fa-code service-big-icon"></i>
                 </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-share-alt"></i></div>
-                    <h3>Social Media</h3>
-                    <p>Gestión profesional de redes para crear comunidad y fidelizar clientes.</p>
+            </div>
+
+            <div class="service-block service-right">
+                <div class="service-visual">
+                    <i class="fas fa-bullhorn service-big-icon"></i>
                 </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-search"></i></div>
-                    <h3>Consultoría SEO</h3>
-                    <p>Posicionamiento orgánico avanzado para dominar las búsquedas en Google.</p>
+                <div class="service-content">
+                    <h3>Gestión de Redes Sociales</h3>
+                    <p>Estrategias de contenido que conectan y convierten. Gestionamos tus perfiles para construir una comunidad sólida, aumentar tu visibilidad y atraer clientes potenciales.</p>
+                </div>
+            </div>
+
+             <div class="service-block service-left">
+                <div class="service-content">
+                    <h3>Automatización & Chatbots IA</h3>
+                    <p>Implementamos inteligencia artificial y chatbots avanzados para automatizar la atención al cliente 24/7, captar leads y optimizar tus procesos de venta.</p>
+                </div>
+                <div class="service-visual">
+                    <i class="fas fa-robot service-big-icon"></i>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+
 
     <footer>
         <div>© 2025 Ecentia Marketing</div>
         <div class="footer-info">
-            <span><i class="far fa-envelope"></i>ecentiaseo@gmail.com</span>
+            <a href="mailto:ecentiaseo@gmail.com"><i class="far fa-envelope"></i>ecentiaseo@gmail.com</a>
             <span><i class="fas fa-map-marker-alt"></i>Sevilla, España</span>
         </div>
     </footer>
 
-    <script>
-        // --- 1. CONFIGURACIÓN FORMSPREE (AJAX) ---
-        const form = document.getElementById("newsletter-form");
-        const btn = document.getElementById("submit-btn");
-        const originalBtnText = btn.innerHTML;
-
-        async function handleSubmit(event) {
-            event.preventDefault();
-            const data = new FormData(event.target);
-            
-            // Cambio visual: "Enviando..."
-            btn.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
-            btn.disabled = true;
-
-            fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    // Éxito
-                    btn.innerHTML = '¡Suscrito! <i class="fas fa-check"></i>';
-                    btn.classList.add('btn-success');
-                    form.reset();
-                    
-                    // Volver al estado normal tras 3 segundos
-                    setTimeout(() => {
-                        btn.innerHTML = originalBtnText;
-                        btn.classList.remove('btn-success');
-                        btn.disabled = false;
-                    }, 3000);
-                } else {
-                    // Error en la respuesta (ej: spam detectado)
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                             btn.innerHTML = 'Error. Intenta de nuevo.';
-                        } else {
-                             btn.innerHTML = 'Error desconocido.';
-                        }
-                        btn.classList.add('btn-error');
-                        setTimeout(() => {
-                            btn.innerHTML = originalBtnText;
-                            btn.classList.remove('btn-error');
-                            btn.disabled = false;
-                        }, 3000);
-                    });
-                }
-            }).catch(error => {
-                // Error de red
-                btn.innerHTML = 'Error de red';
-                btn.classList.add('btn-error');
-                 setTimeout(() => {
-                        btn.innerHTML = originalBtnText;
-                        btn.classList.remove('btn-error');
-                        btn.disabled = false;
-                }, 3000);
-            });
-        }
-
-        form.addEventListener("submit", handleSubmit);
-
-        // --- 2. LÓGICA MODO OSCURO/CLARO ---
-        const toggleBtn = document.getElementById('theme-toggle');
-        const body = document.body;
-        const icon = toggleBtn.querySelector('i');
-
-        // Detección automática
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            body.classList.add('light-mode');
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-        }
-
-        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', event => {
-            if (event.matches) {
-                body.classList.add('light-mode');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            } else {
-                body.classList.remove('light-mode');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        });
-
-        toggleBtn.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            
-            if(body.classList.contains('light-mode')){
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            } else {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        });
-
-        // --- 3. CONTADOR REGRESIVO ---
-        const countDownDate = new Date();
-        countDownDate.setDate(countDownDate.getDate() + 14); 
-
-        const updateTimer = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
-            document.getElementById("mins").innerHTML = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("secs").innerHTML = seconds < 10 ? "0" + seconds : seconds;
-
-            if (distance < 0) {
-                clearInterval(updateTimer);
-                document.getElementById("countdown").innerHTML = "¡YA ESTAMOS ONLINE!";
-            }
-        }, 1000);
-    </script>
+    <script src="animations.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
