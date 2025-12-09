@@ -3,165 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Ecentia Marketing - Diseño Web y SEO en Sevilla</title>
-    <meta name="description" content="¿Necesitas más clientes? Agencia de Marketing Digital en Sevilla experta en Diseño Web profesional, posicionamiento en Google (SEO) y gestión de Redes Sociales.">
-    <meta name="keywords" content="diseño web sevilla, empresa seo, agencia marketing digital, gestionar redes sociales, conseguir clientes online, ecentia">
-    <meta name="author" content="Ecentia Marketing">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://ecentia.es/">
-
-    <link rel="icon" type="image/png" href="assets/logo.png">
-
-    <meta property="og:title" content="Ecentia Marketing - Impulsa tu Negocio">
-    <meta property="og:description" content="Diseño Web y Estrategias de Marketing para conseguir más ventas y clientes.">
-    <meta property="og:image" content="https://ecentia.es/assets/logo.png">
-    <meta property="og:url" content="https://ecentia.es/">
-    <meta property="og:type" content="website">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Ecentia Marketing",
-      "image": "https://ecentia.es/assets/logo.png",
-      "description": "Agencia de marketing digital en Sevilla especializada en ayudar a empresas a conseguir clientes mediante diseño web y SEO.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Sevilla",
-        "addressCountry": "ES"
-      },
-      "priceRange": "$$"
-    }
-    </script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Ecentia | The Monolith</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root { --p: #8b21de; --d: #050505; --w: #fff; --e: cubic-bezier(0.23, 1, 0.32, 1); }
+        *{box-sizing:border-box;cursor:none} body{margin:0;bg:var(--d);color:var(--w);font-family:'Space Grotesk',sans-serif;background:var(--d);overflow-x:hidden}
+        h1,h2,.m-link{font-family:'Syne',sans-serif} a{text-decoration:none;color:inherit}
+        
+        /* LAYERS */
+        .noise{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:90;opacity:.07;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+        .cur{position:fixed;width:20px;height:20px;bg:var(--w);border-radius:50%;pointer-events:none;z-index:99;mix-blend-mode:exclusion;transition:transform .1s, width .3s, height .3s;top:0;left:0;transform:translate(-50%,-50%)}
+        .cur.active{width:80px;height:80px;background:var(--p);mix-blend-mode:normal;opacity:.8}
+
+        /* NAV & MENU (V5) */
+        .nav{position:fixed;top:0;width:100%;padding:2rem 3rem;display:flex;justify-content:space-between;z-index:50;mix-blend-mode:difference}
+        .logo{font-family:'Syne';font-weight:800;font-size:1.5rem;text-transform:uppercase}
+        .trig{font-weight:600;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:10px}
+        .menu{position:fixed;top:0;right:0;width:0;height:100%;background:#0f172a;z-index:55;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:width .8s var(--e)}
+        .menu.open{width:100%}
+        .m-link{font-size:clamp(3rem,8vw,7rem);font-weight:800;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.3);line-height:1.1;transition:.4s;position:relative;display:block}
+        .m-link:hover{color:var(--w);-webkit-text-stroke:0;transform:scale(1.05)}
+        .m-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);width:50vw;height:60vh;object-fit:cover;opacity:0;z-index:-1;transition:.6s;filter:grayscale(1) brightness(.5);border-radius:20px}
+
+        /* SCROLL ENGINE */
+        body { height: 100vh; overflow-y: scroll; } /* Necesario para scroll nativo */
+        .viewport { position: fixed; top: 0; left: 0; width: 100%; overflow: hidden; } /* Contenedor fijo */
+        .scroll-c { width: 100%; will-change: transform; } /* Contenedor animado */
+
+        /* HERO V4 (LIQUID) */
+        .hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;text-align:center;overflow:hidden}
+        canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.6}
+        .h-tit{font-size:clamp(4rem,15vw,13rem);line-height:.8;font-weight:800;text-transform:uppercase;margin:0;mix-blend-mode:overlay}
+        .s-ind{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.8rem;opacity:.6}
+        .line{width:1px;height:60px;background:var(--w);animation:drop 2s infinite}
+
+        /* MARQUEE */
+        .marq{padding:3rem 0;background:var(--p);transform:rotate(-2deg) scale(1.05);width:105vw;margin-left:-2.5vw;display:flex;white-space:nowrap;margin-bottom:5rem;overflow:hidden}
+        .m-txt{font-family:'Syne';font-size:3.5rem;font-weight:800;text-transform:uppercase;color:var(--d);margin-right:3rem;animation:mv 20s linear infinite}
+
+        /* PROJECTS V5 (3D TILT) */
+        .proj{padding:5rem 5vw;border-top:1px solid #333;display:flex;justify-content:space-between;align-items:center;position:relative;transition:.4s}
+        .proj:last-child{border-bottom:1px solid #333}
+        .proj:hover{background:rgba(139,33,222,.05);padding-left:7vw}
+        .p-tit{font-family:'Syne';font-size:4rem;font-weight:800;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px var(--w);transition:.4s}
+        .proj:hover .p-tit{color:var(--w);-webkit-text-stroke:0}
+        .rev{position:fixed;width:450px;height:320px;top:0;left:0;pointer-events:none;opacity:0;z-index:60;transform:translate(-50%,-50%) scale(.5);transition:opacity .3s, transform .1s;box-shadow:0 20px 50px #000}
+        .rev img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+
+        /* FOOTER */
+        footer{height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-top:1px solid #333}
+        .btn{padding:1.5rem 3.5rem;border:1px solid #333;border-radius:100px;text-transform:uppercase;letter-spacing:2px;font-weight:600;transition:.3s;display:inline-block}
+        .btn:hover{background:var(--p);border-color:var(--p);color:var(--w)}
+
+        @keyframes drop{0%{height:0;opacity:0}50%{height:60px;opacity:1}100%{height:0;opacity:0;transform:translateY(60px)}}
+        @keyframes mv{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    </style>
 </head>
 <body>
+    <div class="noise"></div>
+    <div class="cur"></div>
+    <div class="rev"><img src="" id="revImg"></div>
 
-    <header class="fade-in">
-        <div class="logo">
-            <a href="/" style="text-decoration: none; color: inherit;">
-                <h3>Ecentia<span class="logo-dot">.</span></h3>
-            </a>
-        </div>
-        <div class="header-actions">
-            <button id="theme-toggle" class="theme-toggle-btn" title="Cambiar tema"><i class="fas fa-sun"></i></button>
-            <a href="soporte.html" class="btn-ghost">Soporte</a>
-            <a href="mailto:ecentiaseo@gmail.com" class="btn-primary">Contáctanos</a>
-        </div>
-    </header>
+    <nav class="nav">
+        <div class="logo mag">Ecentia.</div>
+        <div class="trig mag" onclick="tog()"><span>Menu</span><i class="fa-solid fa-bars"></i></div>
+    </nav>
 
-    <main>
-        <div class="badge fade-in">WEB EN CONSTRUCCIÓN</div>
+    <div class="menu" id="menu">
+        <div class="trig mag" onclick="tog()" style="position:absolute;top:2rem;right:3rem;color:var(--w)">Close X</div>
+        <div style="text-align:center;z-index:2">
+            <a href="#" class="m-link" data-img="https://images.unsplash.com/photo-1481487484168-9b930d5b7d9f">Proyectos</a>
+            <a href="#" class="m-link" data-img="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">Agencia</a>
+            <a href="#" class="m-link" data-img="https://images.unsplash.com/photo-1556761175-5973dc0f32e7">Contacto</a>
+            <img src="" class="m-bg" id="mbg">
+        </div>
+    </div>
+
+    <div class="viewport">
+        <div class="scroll-c" id="sc">
+            <header class="hero">
+                <canvas id="cvs"></canvas>
+                <div style="z-index:2">
+                    <h1 class="h-tit">Future<br>Ready</h1>
+                </div>
+                <div class="s-ind"><span>SCROLL</span><div class="line"></div></div>
+            </header>
+
+            <div class="marq">
+                <div class="m-txt">DIGITAL EXPERIENCE • AUTOMATION • WEB DESIGN • DIGITAL EXPERIENCE • AUTOMATION • WEB DESIGN •</div>
+            </div>
+
+            <div style="padding:5rem 0">
+                <div class="proj mag" data-img="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=800"><h3 class="p-tit">Neon Shop</h3><span>SHOPIFY</span></div>
+                <div class="proj mag" data-img="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800"><h3 class="p-tit">Fintech App</h3><span>APP</span></div>
+                <div class="proj mag" data-img="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800"><h3 class="p-tit">Aerolab</h3><span>WEB</span></div>
+            </div>
+
+            <footer>
+                <h2 style="font-size:4rem;margin-bottom:2rem;text-transform:uppercase;font-family:'Syne'">Let's Talk</h2>
+                <a href="#" class="btn mag">Start Project</a>
+                <div style="margin-top:50px;color:#666">© 2025 ECENTIA</div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. SCROLL ENGINE (V4 FIXED) ---
+        const sc = document.getElementById('sc');
+        const body = document.body;
+        let curr = 0, tar = 0;
+
+        // Force body height to match content height
+        function upH() { body.style.height = sc.getBoundingClientRect().height + 'px'; }
+        new ResizeObserver(upH).observe(sc);
+        window.addEventListener('resize', upH);
         
-        <h1 class="fade-in">Diseñamos el <br><span>Futuro Digital</span></h1>
+        // Loop
+        window.addEventListener('scroll', () => tar = window.scrollY);
+        function loop() {
+            curr += (tar - curr) * 0.08; // Inertia
+            const skew = (tar - curr) * 0.005;
+            sc.style.transform = `translateY(-${curr}px) skewY(${skew}deg)`;
+            requestAnimationFrame(loop);
+        }
+        loop();
+
+        // --- 2. CANVAS FLUID (V4) ---
+        const cvs = document.getElementById('cvs'), ctx = cvs.getContext('2d');
+        let w, h, pts = [];
+        const res = () => { w=cvs.width=window.innerWidth; h=cvs.height=window.innerHeight; };
+        window.addEventListener('resize', res); res();
         
-        <p class="hero-text fade-in">
-            En <strong>Ecentia</strong> ayudamos a empresas a destacar. Creamos páginas web atractivas y estrategias de marketing que atraen clientes reales a tu negocio.
-        </p>
+        class P {
+            constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5);this.vy=(Math.random()-.5)}
+            up(){this.x+=this.vx;this.y+=this.vy; if(this.x<0||this.x>w)this.vx*=-1; if(this.y<0||this.y>h)this.vy*=-1;}
+            dr(){ctx.fillStyle='#8b21de';ctx.globalAlpha=.6;ctx.beginPath();ctx.arc(this.x,this.y,2,0,Math.PI*2);ctx.fill();}
+        }
+        for(let i=0;i<60;i++) pts.push(new P());
+        
+        function ani(){
+            ctx.clearRect(0,0,w,h);
+            pts.forEach(p=>{ p.up(); p.dr(); pts.forEach(p2=>{
+                let d = Math.hypot(p.x-p2.x, p.y-p2.y);
+                if(d<150){ctx.beginPath();ctx.strokeStyle=`rgba(139,33,222,${1-d/150})`;ctx.moveTo(p.x,p.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();}
+            })});
+            requestAnimationFrame(ani);
+        }
+        ani();
 
-        <div class="countdown-container fade-in" id="countdown">
-            <div class="time-box"><span class="number" id="days">00</span><span class="label">Días</span></div>
-            <div class="separator">:</div>
-            <div class="time-box"><span class="number" id="hours">00</span><span class="label">Horas</span></div>
-            <div class="separator">:</div>
-            <div class="time-box"><span class="number" id="mins">00</span><span class="label">Mins</span></div>
-            <div class="separator">:</div>
-            <div class="time-box"><span class="number" id="secs">00</span><span class="label">Segs</span></div>
-        </div>
+        // --- 3. INTERACTIONS (V5) ---
+        const cur = document.querySelector('.cur'), rev = document.querySelector('.rev'), rImg = document.getElementById('revImg');
+        const mbg = document.getElementById('mbg');
+        
+        document.addEventListener('mousemove', e => {
+            cur.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        });
 
-        <form id="newsletter-form" action="https://formspree.io/f/xnnwwebz" method="POST" class="newsletter fade-in">
-            <input type="email" name="email" placeholder="Introduce tu email" required autocomplete="email">
-            <button type="submit" id="submit-btn">
-                <span>Suscribirme</span>
-                <i class="fas fa-bolt"></i>
-            </button>
-        </form>
-    </main>
-    
-    <div class="text-banner-section fade-in">
-        <div class="marquee-text">
-            <div class="marquee-text-content scroll-text">
-                ESTRATEGIA DIGITAL   DISEÑO QUE IMPACTA   CRECIMIENTO EXPONENCIAL   INNOVACIÓN TECNOLÓGICA   MARCAS CON PROPÓSITO   EXPERIENCIAS INOLVIDABLES   
-            </div>
-            <div class="marquee-text-content scroll-text" aria-hidden="true">
-                ESTRATEGIA DIGITAL   DISEÑO QUE IMPACTA   CRECIMIENTO EXPONENCIAL   INNOVACIÓN TECNOLÓGICA   MARCAS CON PROPÓSITO   EXPERIENCIAS INOLVIDABLES   
-            </div>
-        </div>
-    </div>
+        // Hover Projects (3D TILT)
+        document.querySelectorAll('.proj').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                rImg.src = el.dataset.img; rev.style.opacity=1; cur.classList.add('active');
+            });
+            el.addEventListener('mouseleave', () => { rev.style.opacity=0; cur.classList.remove('active'); });
+            el.addEventListener('mousemove', e => {
+                rev.style.left = e.clientX+'px'; rev.style.top = e.clientY+'px';
+                // 3D Tilt Calc
+                let rx = (e.clientY/window.innerHeight-.5)*-20;
+                let ry = (e.clientX/window.innerWidth-.5)*20;
+                rev.style.transform = `translate(-50%,-50%) perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale(.6)`;
+            });
+        });
 
-    <div class="impressive-services-section fade-in">
-        <div class="section-header center-text">
-            <h2 class="section-title-large">Lo que Hacemos <br><span>Mejor que Nadie</span></h2>
-            <p class="section-subtitle">Soluciones digitales integrales para impulsar tu negocio al siguiente nivel.</p>
-        </div>
-
-        <div class="services-showcase">
-            <div class="service-block service-left">
-                <div class="service-content">
-                    <h3>Desarrollo Web a Medida</h3>
-                    <p>Creamos páginas web únicas, rápidas y optimizadas para móviles. No usamos plantillas genéricas; diseñamos la plataforma perfecta para tu marca y tus objetivos de conversión.</p>
-                </div>
-                <div class="service-visual">
-                    <i class="fas fa-code service-big-icon"></i>
-                </div>
-            </div>
-
-            <div class="service-block service-right">
-                <div class="service-visual">
-                    <i class="fas fa-bullhorn service-big-icon"></i>
-                </div>
-                <div class="service-content">
-                    <h3>Gestión de Redes Sociales</h3>
-                    <p>Estrategias de contenido que conectan y convierten. Gestionamos tus perfiles para construir una comunidad sólida, aumentar tu visibilidad y atraer clientes potenciales.</p>
-                </div>
-            </div>
-
-             <div class="service-block service-left">
-                <div class="service-content">
-                    <h3>Automatización & Chatbots IA</h3>
-                    <p>Implementamos inteligencia artificial y chatbots avanzados para automatizar la atención al cliente 24/7, captar leads y optimizar tus procesos de venta.</p>
-                </div>
-                <div class="service-visual">
-                    <i class="fas fa-robot service-big-icon"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-col">
-            <div>© 2025 Ecentia Marketing</div>
-            <div class="legal-links">
-                <a href="aviso-legal.html">Aviso Legal</a> |
-                <a href="politica-privacidad.html">Política de Privacidad</a> |
-                <a href="politica-cookies.html">Política de Cookies</a>
-            </div>
-        </div>
-        <div class="footer-info">
-            <a href="mailto:ecentiaseo@gmail.com"><i class="far fa-envelope"></i>ecentiaseo@gmail.com</a>
-            <span><i class="fas fa-map-marker-alt"></i>Sevilla, España</span>
-        </div>
-    </footer>
-
-    <div id="cookie-banner">
-        <div class="cookie-title">
-            <i class="fas fa-cookie-bite" style="color: var(--accent-color);"></i> Cookies
-        </div>
-        <p class="cookie-text">
-            Usamos cookies para mejorar tu experiencia. Al navegar, aceptas nuestra <a href="politica-cookies.html">Política de Cookies</a>.
-        </p>
-        <div class="cookie-buttons">
-            <button id="deny-cookies" class="btn-cookie-deny">Rechazar</button>
-            <button id="accept-cookies" class="btn-cookie-accept">Aceptar</button>
-        </div>
-    </div>
-
-    <script src="animations.js"></script>
-    <script src="script.js"></script>
-
+        // Menu Logic
+        function tog(){ document.getElementById('menu').classList.toggle('open'); }
+        document.querySelectorAll('.m-link').forEach(l => {
+            l.addEventListener('mouseenter', () => { mbg.src=l.dataset.img; mbg.style.opacity=.4; });
+            l.addEventListener('mouseleave', () => { mbg.style.opacity=0; });
+        });
+        
+        // Magnetic Buttons
+        document.querySelectorAll('.mag').forEach(b => {
+            b.addEventListener('mousemove', e => {
+                let r = b.getBoundingClientRect();
+                b.style.transform = `translate(${(e.clientX-(r.left+r.width/2))*.3}px, ${(e.clientY-(r.top+r.height/2))*.3}px)`;
+                cur.classList.add('active');
+            });
+            b.addEventListener('mouseleave', () => { b.style.transform='translate(0,0)'; cur.classList.remove('active'); });
+        });
+    </script>
 </body>
 </html>
