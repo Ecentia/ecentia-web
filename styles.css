@@ -1,4 +1,6 @@
+/* --- 1. SETUP & VARIABLES --- */
 :root {
+<<<<<<< Updated upstream
     /* Variables Modo Oscuro (Por defecto) */
     --bg-color: #050510;
     --card-bg: rgba(20, 20, 40, 0.7);
@@ -24,10 +26,37 @@ body.light-mode {
 
 /* Reset y Base */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+=======
+    --bg-color: #050505;
+    --text-color: #e0e0e0;
+    --accent-color: #8b21de; /* Ecentia Purple */
+    --accent-glow: #a855f7;
+    --white: #ffffff;
+    --gray: #888;
+    
+    /* Layout */
+    --container-width: 1400px;
+    --gutter: 20px;
+    
+    /* Animation Easing */
+    --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@font-face {
+    font-family: 'Syne';
+    src: url('https://fonts.gstatic.com/s/syne/v15/8vII7w402VwnP_mJ.woff2') format('woff2');
+    /* Fallback google font loading en HTML, esto es por si acaso */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* Ocultamos cursor nativo */ }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+>>>>>>> Stashed changes
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+<<<<<<< Updated upstream
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -305,4 +334,172 @@ footer { border-top: 1px solid var(--border-color); padding: 50px 50px; display:
     
     footer { padding: 30px 20px; flex-direction: column; text-align: center; }
     .footer-col, .footer-info { align-items: center; width: 100%; }
+=======
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+body.loading { overflow: hidden; height: 100vh; }
+
+/* --- 2. NOISE TEXTURE & PRELOADER --- */
+.noise-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.07'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 900; opacity: 0.5; mix-blend-mode: overlay;
+}
+
+.preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-color); z-index: 9999;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    transition: transform 0.8s var(--ease-out-expo);
+}
+.loader-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2rem; margin-bottom: 20px; letter-spacing: 5px; color: var(--accent-color); }
+.loader-bar { width: 200px; height: 2px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+.bar-fill { width: 0%; height: 100%; background: var(--white); transition: width 0.5s; }
+body.loaded .preloader { transform: translateY(-100%); }
+
+/* --- 3. CUSTOM CURSOR --- */
+.cursor-dot, .cursor-circle {
+    position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 1000;
+    transform: translate(-50%, -50%); transition: transform 0.1s, width 0.3s, height 0.3s, background-color 0.3s;
+    mix-blend-mode: difference;
+}
+.cursor-dot { width: 8px; height: 8px; background: var(--white); }
+.cursor-circle { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.5); transition: all 0.15s ease-out; }
+
+/* Estado Hover del cursor */
+body.hovering .cursor-circle { width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-color: transparent; backdrop-filter: blur(2px); }
+body.hovering .cursor-dot { width: 4px; height: 4px; }
+
+/* --- 4. NAVIGATION --- */
+.nav-floating {
+    position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
+    width: 90%; max-width: var(--container-width);
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 100; mix-blend-mode: difference;
+}
+.logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--white); text-decoration: none; }
+.nav-items { display: flex; gap: 30px; align-items: center; }
+.nav-items a { text-decoration: none; color: var(--white); font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; position: relative; }
+.nav-items a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: var(--white); transition: 0.3s; }
+.nav-items a:hover::after { width: 100%; }
+
+/* --- 5. HERO SECTION --- */
+.hero-section { height: 100vh; min-height: 700px; display: flex; align-items: center; position: relative; overflow: hidden; }
+.hero-bg-glow {
+    position: absolute; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-color) 0%, transparent 60%);
+    opacity: 0.15; filter: blur(80px); top: 50%; left: 50%; transform: translate(-50%, -50%);
+    animation: pulseGlow 8s infinite alternate;
+}
+@keyframes pulseGlow { 0% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0.25; transform: translate(-50%, -50%) scale(1.2); } }
+
+.container { width: 100%; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--gutter); }
+
+.mega-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5rem, 11vw, 10rem);
+    line-height: 0.9; font-weight: 800; text-transform: uppercase;
+    color: var(--white); margin-bottom: 40px;
+}
+.line { overflow: hidden; display: block; }
+.line.indent { margin-left: 10vw; }
+.reveal-text { display: block; transform: translateY(120%); transition: transform 1.2s var(--ease-out-expo); }
+body.loaded .reveal-text { transform: translateY(0); }
+
+.outline-text { -webkit-text-stroke: 1px var(--white); color: transparent; transition: 0.3s; }
+.mega-title:hover .outline-text { color: var(--accent-color); -webkit-text-stroke: 0; }
+
+.label-wrapper { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 50px; margin-bottom: 30px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+.status-dot { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 10px #00ff88; }
+
+.hero-footer { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 30px; }
+.hero-desc { max-width: 400px; color: var(--gray); font-size: 1.1rem; line-height: 1.6; }
+.scroll-down-btn { display: flex; align-items: center; gap: 15px; color: var(--white); text-decoration: none; opacity: 0.7; transition: 0.3s; }
+.scroll-down-btn:hover { opacity: 1; }
+.arrow-down { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+/* --- 6. MARQUEE --- */
+.marquee-section { padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden; background: #080808; }
+.marquee-inner { display: flex; width: fit-content; animation: scrollMarquee 20s linear infinite; }
+.marquee-part { font-family: 'Syne', sans-serif; font-size: 4rem; font-weight: 700; white-space: nowrap; padding-right: 50px; color: rgba(255,255,255,0.05); transition: 0.3s; }
+.marquee-section:hover .marquee-part { color: var(--accent-color); opacity: 0.5; }
+@keyframes scrollMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* --- 7. WORKS SECTION --- */
+.work-section { padding: 150px 0; }
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 80px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.section-title { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 700; }
+.section-number { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--gray); }
+
+.project-item { display: flex; gap: 60px; margin-bottom: 150px; align-items: center; }
+.project-item.reverse { flex-direction: row-reverse; }
+
+.project-info { flex: 1; }
+.cat { color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 15px; display: block; }
+.project-info h3 { font-family: 'Syne', sans-serif; font-size: 3.5rem; margin-bottom: 20px; line-height: 1; }
+.project-info p { color: var(--gray); font-size: 1.1rem; margin-bottom: 30px; max-width: 400px; }
+.tags { display: flex; gap: 10px; list-style: none; }
+.tags li { border: 1px solid rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; color: var(--text-color); }
+
+.project-visual { flex: 1.5; height: 500px; position: relative; border-radius: 10px; overflow: hidden; transform-origin: center; transition: transform 0.5s; }
+.visual-inner { width: 100%; height: 100%; transition: transform 0.6s; display: flex; align-items: center; justify-content: center; }
+.project-visual:hover { transform: scale(0.98); }
+.project-visual:hover .visual-inner { transform: scale(1.1); }
+.overlay-reveal { opacity: 0; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.5rem; color: white; transition: 0.3s; z-index: 2; text-transform: uppercase; letter-spacing: 2px; }
+.project-visual:hover .overlay-reveal { opacity: 1; }
+
+.btn-outline { padding: 15px 40px; border: 1px solid rgba(255,255,255,0.2); color: var(--white); text-decoration: none; border-radius: 50px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: 0.3s; display: inline-block; }
+.btn-outline:hover { background: var(--white); color: black; }
+.center-btn { text-align: center; margin-top: 50px; }
+
+/* --- 8. SERVICES (Spotlight) --- */
+.services-section { padding: 100px 0; background: #080808; }
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+
+.card {
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 50px 30px;
+    border-radius: 16px; position: relative; overflow: hidden; transition: 0.3s;
+}
+/* Magia del Spotlight hecha en JS, pero preparamos el CSS */
+.card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
+    z-index: 1; opacity: 0; transition: opacity 0.5s; pointer-events: none;
+}
+.card:hover::before { opacity: 1; }
+.card-content { position: relative; z-index: 2; pointer-events: none; }
+.card-icon { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 25px; }
+.card h3 { font-family: 'Syne', sans-serif; font-size: 1.5rem; margin-bottom: 15px; }
+.card p { color: var(--gray); line-height: 1.6; }
+
+/* --- 9. FOOTER --- */
+.footer-section { padding: 150px 0 50px; text-align: center; }
+.cta-title { font-family: 'Syne', sans-serif; font-size: 5vw; line-height: 1.1; margin-bottom: 50px; }
+.text-stroke { -webkit-text-stroke: 1px var(--white); color: transparent; display: block; }
+.btn-big {
+    background: var(--accent-color); color: white; padding: 20px 60px; font-size: 1.2rem;
+    border-radius: 100px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 15px;
+    transition: 0.3s; box-shadow: 0 10px 40px rgba(139, 33, 222, 0.4);
+}
+.btn-big:hover { transform: scale(1.05); background: #9c2ef0; }
+
+.footer-bottom { margin-top: 100px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; display: flex; justify-content: space-between; text-align: left; }
+.col h4 { font-family: 'Syne'; margin-bottom: 10px; font-size: 1.2rem; }
+.col p { color: var(--gray); font-size: 0.9rem; }
+.links { display: flex; gap: 20px; }
+.hover-link { color: var(--white); text-decoration: none; opacity: 0.6; transition: 0.3s; }
+.hover-link:hover { opacity: 1; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .mega-title { font-size: 15vw; }
+    .line.indent { margin-left: 0; }
+    .project-item, .project-item.reverse { flex-direction: column; text-align: center; gap: 30px; }
+    .nav-items { display: none; } /* Idealmente un menú hamburguesa aquí */
+    .project-visual { height: 300px; width: 100%; }
+    .cta-title { font-size: 3rem; }
+>>>>>>> Stashed changes
 }
