@@ -3,165 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecentia | El Futuro Digital de tu Negocio</title>
+    <meta name="description" content="Agencia de diseño web, automatización e IA en Sevilla. Creamos experiencias digitales que venden.">
     
-    <title>Ecentia Marketing - Diseño Web y SEO en Sevilla</title>
-    <meta name="description" content="¿Necesitas más clientes? Agencia de Marketing Digital en Sevilla experta en Diseño Web profesional, posicionamiento en Google (SEO) y gestión de Redes Sociales.">
-    <meta name="keywords" content="diseño web sevilla, empresa seo, agencia marketing digital, gestionar redes sociales, conseguir clientes online, ecentia">
-    <meta name="author" content="Ecentia Marketing">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://ecentia.es/">
-
     <link rel="icon" type="image/png" href="assets/logo.png">
 
-    <meta property="og:title" content="Ecentia Marketing - Impulsa tu Negocio">
-    <meta property="og:description" content="Diseño Web y Estrategias de Marketing para conseguir más ventas y clientes.">
-    <meta property="og:image" content="https://ecentia.es/assets/logo.png">
-    <meta property="og:url" content="https://ecentia.es/">
-    <meta property="og:type" content="website">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Ecentia Marketing",
-      "image": "https://ecentia.es/assets/logo.png",
-      "description": "Agencia de marketing digital en Sevilla especializada en ayudar a empresas a conseguir clientes mediante diseño web y SEO.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Sevilla",
-        "addressCountry": "ES"
-      },
-      "priceRange": "$$"
-    }
-    </script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header class="fade-in">
-        <div class="logo">
-            <a href="/" style="text-decoration: none; color: inherit;">
-                <h3>Ecentia<span class="logo-dot">.</span></h3>
+    <div class="cursor-glow"></div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="Ecentia Logo" class="logo-img">
+                <span>Ecentia.</span>
             </a>
+            <div class="nav-links">
+                <a href="#servicios">Servicios</a>
+                <a href="#portfolio">Proyectos</a>
+                <a href="#nosotros">Estudio</a>
+            </div>
+            <a href="mailto:ecentiaseo@gmail.com" class="btn-primary glow-effect">
+                Iniciar Proyecto <i class="fas fa-arrow-right"></i>
+            </a>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
         </div>
-        <div class="header-actions">
-            <button id="theme-toggle" class="theme-toggle-btn" title="Cambiar tema"><i class="fas fa-sun"></i></button>
-            <a href="soporte.html" class="btn-ghost">Soporte</a>
-            <a href="mailto:ecentiaseo@gmail.com" class="btn-primary">Contáctanos</a>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="badge fade-up">🚀 Agencia Digital 360°</div>
+            <h1 class="fade-up delay-1">
+                Diseñamos hoy el <br>
+                <span class="text-gradient">Futuro de tu Negocio</span>
+            </h1>
+            <p class="hero-desc fade-up delay-2">
+                No hacemos simples páginas web. Construimos <strong>ecosistemas digitales</strong>, tiendas online y automatizaciones con IA que convierten visitantes en clientes leales.
+            </p>
+            <div class="hero-buttons fade-up delay-3">
+                <a href="#portfolio" class="btn-primary big-btn">Ver nuestro trabajo</a>
+                <a href="#servicios" class="btn-ghost">Descubrir servicios</a>
+            </div>
         </div>
+        
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
     </header>
 
-    <main>
-        <div class="badge fade-in">WEB EN CONSTRUCCIÓN</div>
-        
-        <h1 class="fade-in">Diseñamos el <br><span>Futuro Digital</span></h1>
-        
-        <p class="hero-text fade-in">
-            En <strong>Ecentia</strong> ayudamos a empresas a destacar. Creamos páginas web atractivas y estrategias de marketing que atraen clientes reales a tu negocio.
-        </p>
-
-        <div class="countdown-container fade-in" id="countdown">
-            <div class="time-box"><span class="number" id="days">00</span><span class="label">Días</span></div>
-            <div class="separator">:</div>
-            <div class="time-box"><span class="number" id="hours">00</span><span class="label">Horas</span></div>
-            <div class="separator">:</div>
-            <div class="time-box"><span class="number" id="mins">00</span><span class="label">Mins</span></div>
-            <div class="separator">:</div>
-            <div class="time-box"><span class="number" id="secs">00</span><span class="label">Segs</span></div>
-        </div>
-
-        <form id="newsletter-form" action="https://formspree.io/f/xnnwwebz" method="POST" class="newsletter fade-in">
-            <input type="email" name="email" placeholder="Introduce tu email" required autocomplete="email">
-            <button type="submit" id="submit-btn">
-                <span>Suscribirme</span>
-                <i class="fas fa-bolt"></i>
-            </button>
-        </form>
-    </main>
-    
-    <div class="text-banner-section fade-in">
-        <div class="marquee-text">
-            <div class="marquee-text-content scroll-text">
-                ESTRATEGIA DIGITAL   DISEÑO QUE IMPACTA   CRECIMIENTO EXPONENCIAL   INNOVACIÓN TECNOLÓGICA   MARCAS CON PROPÓSITO   EXPERIENCIAS INOLVIDABLES   
+    <div class="text-banner-section scroll-reveal">
+        <div class="marquee-wrapper">
+            <div class="marquee-text">
+                <span>DISEÑO WEB PREMIUM • AUTOMATIZACIÓN IA • ECOMMERCE • BRANDING • SEO ESTRATÉGICO •</span>
+                <span>DISEÑO WEB PREMIUM • AUTOMATIZACIÓN IA • ECOMMERCE • BRANDING • SEO ESTRATÉGICO •</span>
             </div>
-            <div class="marquee-text-content scroll-text" aria-hidden="true">
-                ESTRATEGIA DIGITAL   DISEÑO QUE IMPACTA   CRECIMIENTO EXPONENCIAL   INNOVACIÓN TECNOLÓGICA   MARCAS CON PROPÓSITO   EXPERIENCIAS INOLVIDABLES   
+            <div class="marquee-text" aria-hidden="true">
+                <span>DISEÑO WEB PREMIUM • AUTOMATIZACIÓN IA • ECOMMERCE • BRANDING • SEO ESTRATÉGICO •</span>
+                <span>DISEÑO WEB PREMIUM • AUTOMATIZACIÓN IA • ECOMMERCE • BRANDING • SEO ESTRATÉGICO •</span>
             </div>
         </div>
     </div>
 
-    <div class="impressive-services-section fade-in">
-        <div class="section-header center-text">
-            <h2 class="section-title-large">Lo que Hacemos <br><span>Mejor que Nadie</span></h2>
-            <p class="section-subtitle">Soluciones digitales integrales para impulsar tu negocio al siguiente nivel.</p>
+    <section id="servicios" class="section">
+        <div class="container">
+            <div class="section-header center">
+                <h2 class="section-title scroll-reveal">Dominamos lo <span class="text-gradient">Digital</span></h2>
+                <p class="section-subtitle scroll-reveal">Soluciones integrales para escalar tu facturación.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card scroll-reveal">
+                    <div class="icon-box"><i class="fas fa-layer-group"></i></div>
+                    <h3>Web & UI/UX</h3>
+                    <p>Diseño web hipnótico y funcional. Desde landings que convierten hasta plataformas corporativas complejas.</p>
+                    <ul class="feature-list">
+                        <li>Diseño Responsive</li>
+                        <li>Velocidad Extrema</li>
+                        <li>Experiencia de Usuario (UX)</li>
+                    </ul>
+                </div>
+                <div class="service-card scroll-reveal delay-1">
+                    <div class="icon-box"><i class="fas fa-robot"></i></div>
+                    <h3>Automatización & IA</h3>
+                    <p>Ahorra tiempo y dinero. Implementamos Chatbots y flujos de trabajo automáticos para tu empresa.</p>
+                    <ul class="feature-list">
+                        <li>Chatbots 24/7</li>
+                        <li>Email Marketing Auto</li>
+                        <li>Integración CRM</li>
+                    </ul>
+                </div>
+                <div class="service-card scroll-reveal delay-2">
+                    <div class="icon-box"><i class="fas fa-shopping-bag"></i></div>
+                    <h3>E-Commerce</h3>
+                    <p>Tiendas online diseñadas para vender. Optimizamos el checkout y la experiencia de compra.</p>
+                    <ul class="feature-list">
+                        <li>Shopify / Woocommerce</li>
+                        <li>Pasarelas de Pago</li>
+                        <li>Gestión de Stock</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="services-showcase">
-            <div class="service-block service-left">
-                <div class="service-content">
-                    <h3>Desarrollo Web a Medida</h3>
-                    <p>Creamos páginas web únicas, rápidas y optimizadas para móviles. No usamos plantillas genéricas; diseñamos la plataforma perfecta para tu marca y tus objetivos de conversión.</p>
-                </div>
-                <div class="service-visual">
-                    <i class="fas fa-code service-big-icon"></i>
-                </div>
+    <section id="portfolio" class="section dark-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal">Trabajos <span class="text-gradient">Recientes</span></h2>
+                <p class="section-subtitle scroll-reveal">Una selección de proyectos que han marcado la diferencia.</p>
             </div>
 
-            <div class="service-block service-right">
-                <div class="service-visual">
-                    <i class="fas fa-bullhorn service-big-icon"></i>
+            <div class="bento-grid">
+                <div class="bento-item main-item scroll-reveal">
+                    <div class="bento-content">
+                        <span class="tag">E-Commerce</span>
+                        <h3>Neon Fashion Store</h3>
+                        <p>Rediseño completo de tienda de moda urbana con +200% en conversión.</p>
+                        <a href="#" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="bento-img" style="background: linear-gradient(45deg, #2b1055, #7597de);"></div>
                 </div>
-                <div class="service-content">
-                    <h3>Gestión de Redes Sociales</h3>
-                    <p>Estrategias de contenido que conectan y convierten. Gestionamos tus perfiles para construir una comunidad sólida, aumentar tu visibilidad y atraer clientes potenciales.</p>
-                </div>
-            </div>
 
-             <div class="service-block service-left">
-                <div class="service-content">
-                    <h3>Automatización & Chatbots IA</h3>
-                    <p>Implementamos inteligencia artificial y chatbots avanzados para automatizar la atención al cliente 24/7, captar leads y optimizar tus procesos de venta.</p>
+                <div class="bento-item scroll-reveal delay-1">
+                    <div class="bento-content">
+                        <span class="tag">Landing Page</span>
+                        <h3>Tech Startup</h3>
+                        <p>Lanzamiento de producto SAAS.</p>
+                    </div>
+                    <div class="bento-img" style="background: linear-gradient(135deg, #10b981, #059669);"></div>
                 </div>
-                <div class="service-visual">
-                    <i class="fas fa-robot service-big-icon"></i>
+
+                <div class="bento-item scroll-reveal delay-2">
+                    <div class="bento-content">
+                        <span class="tag">App Design</span>
+                        <h3>Finance Tracker</h3>
+                        <p>UI Kit para aplicación fintech.</p>
+                    </div>
+                    <div class="bento-img" style="background: linear-gradient(135deg, #f59e0b, #d97706);"></div>
+                </div>
+                
+                <div class="bento-item wide-item scroll-reveal">
+                     <div class="bento-content">
+                        <span class="tag">Branding & Web</span>
+                        <h3>Restaurante "Lumina"</h3>
+                        <p>Identidad visual y sistema de reservas automatizado.</p>
+                    </div>
+                    <div class="bento-img" style="background: linear-gradient(to right, #ec4899, #8b5cf6);"></div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="cta-section section">
+        <div class="container cta-container scroll-reveal">
+            <div class="cta-content">
+                <h2>¿Listo para <br> <span class="text-white">romper el mercado?</span></h2>
+                <p>Tu competencia no está descansando. Tú tampoco deberías. Hablemos de tu proyecto hoy mismo.</p>
+                <a href="mailto:ecentiaseo@gmail.com" class="btn-primary big-btn glow-effect">
+                    Agendar Consultoría Gratis
+                </a>
+            </div>
+            <div class="cta-visual">
+                <i class="fas fa-rocket"></i>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <div class="footer-col">
-            <div>© 2025 Ecentia Marketing</div>
-            <div class="legal-links">
-                <a href="aviso-legal.html">Aviso Legal</a> |
-                <a href="politica-privacidad.html">Política de Privacidad</a> |
-                <a href="politica-cookies.html">Política de Cookies</a>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>Ecentia.</h3>
+                <p>Diseño, Tecnología y Estrategia desde Sevilla para el mundo.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="aviso-legal.html">Aviso Legal</a>
+                <a href="politica-privacidad.html">Privacidad</a>
+                <a href="politica-cookies.html">Cookies</a>
+            </div>
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
             </div>
         </div>
-        <div class="footer-info">
-            <a href="mailto:ecentiaseo@gmail.com"><i class="far fa-envelope"></i>ecentiaseo@gmail.com</a>
-            <span><i class="fas fa-map-marker-alt"></i>Sevilla, España</span>
+        <div class="footer-bottom">
+            <p>© 2025 Ecentia Marketing. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <div id="cookie-banner">
-        <div class="cookie-title">
-            <i class="fas fa-cookie-bite" style="color: var(--accent-color);"></i> Cookies
+        <div class="cookie-content">
+            <i class="fas fa-cookie-bite"></i>
+            <p>Usamos cookies para mejorar tu experiencia.</p>
         </div>
-        <p class="cookie-text">
-            Usamos cookies para mejorar tu experiencia. Al navegar, aceptas nuestra <a href="politica-cookies.html">Política de Cookies</a>.
-        </p>
-        <div class="cookie-buttons">
-            <button id="deny-cookies" class="btn-cookie-deny">Rechazar</button>
-            <button id="accept-cookies" class="btn-cookie-accept">Aceptar</button>
+        <div class="cookie-actions">
+            <button id="deny-cookies" class="btn-sm btn-outline">Rechazar</button>
+            <button id="accept-cookies" class="btn-sm btn-fill">Aceptar</button>
         </div>
     </div>
 
     <script src="animations.js"></script>
     <script src="script.js"></script>
-
 </body>
 </html>
