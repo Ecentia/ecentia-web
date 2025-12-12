@@ -5,43 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Cookies - Ecentia</title>
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="legal-styles.css">
 </head>
-<body>
-    <header>
-        <div class="logo"><a href="/" style="text-decoration: none; color: inherit;"><h3>Ecentia<span class="logo-dot">.</span></h3></a></div>
-        <div class="header-actions"><a href="/" class="btn-ghost">Volver al Inicio</a></div>
+<body class="legal-body loading">
+
+    <div class="preloader">
+        <div class="loader-text">LEGAL</div>
+        <div class="loader-bar"><div class="bar-fill"></div></div>
+    </div>
+    <div class="noise-overlay"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+
+    <header class="legal-header fade-in">
+        <div class="logo">
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <h3>Ecentia<span class="logo-dot">.</span></h3>
+            </a>
+        </div>
+        <div class="header-actions">
+            <a href="/" class="btn-ghost">Volver al Inicio</a>
+        </div>
     </header>
 
-    <main class="legal-main">
-        <h1 style="font-size: 3rem; text-align: left; opacity: 1; transform: none;">Política de Cookies</h1>
-        <div class="legal-content">
-            <p>Esta web utiliza cookies propias y de terceros para ofrecerle una mejor experiencia y servicio.</p>
-            
-            <h3>1. ¿Qué son las cookies?</h3>
-            <p>Una cookie es un pequeño fichero de texto que se almacena en su navegador cuando visita casi cualquier página web. Su utilidad es que la web sea capaz de recordar su visita cuando vuelva a navegar por esa página.</p>
+    <main class="legal-main fade-in">
+        
+        <div class="legal-title-header">
+            <h1>Centro Legal</h1>
+            <p style="color: var(--text-muted);">Transparencia y confianza.</p>
+        </div>
 
-            <h3>2. Tipos de cookies utilizadas en esta web</h3>
-            <ul>
-                <li><strong>Cookies técnicas:</strong> Son aquellas que permiten al usuario la navegación a través de la página web y la utilización de las diferentes opciones o servicios que en ella existan.</li>
-                <li><strong>Cookies de análisis:</strong> Son aquellas que permiten cuantificar el número de usuarios y así realizar la medición y análisis estadístico de la utilización que hacen los usuarios del servicio ofertado.</li>
-            </ul>
+        <div class="legal-grid">
+            <aside class="legal-sidebar">
+                <h3>Documentación</h3>
+                <a href="aviso-legal.html" class="legal-nav-link">
+                    Aviso Legal <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="politica-privacidad.html" class="legal-nav-link">
+                    Privacidad <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="politica-cookies.html" class="legal-nav-link active">
+                    Cookies <i class="fas fa-chevron-right"></i>
+                </a>
+            </aside>
 
-            <h3>3. Aceptación y Rechazo</h3>
-            <p>Al acceder a este sitio web por primera vez, verá un aviso donde se le informa de la utilización de las cookies y donde puede consultar esta política de cookies. Puede cambiar la configuración de su navegador para rechazar las cookies, aunque esto puede afectar al correcto funcionamiento de la página.</p>
+            <div class="legal-document">
+                <h2>Política de Cookies</h2>
+                <p>Esta web utiliza cookies propias y de terceros para ofrecerle una mejor experiencia y servicio.</p>
+                
+                <h3>1. ¿Qué son las cookies?</h3>
+                <p>Una cookie es un pequeño fichero de texto que se almacena en su navegador cuando visita casi cualquier página web. Su utilidad es que la web sea capaz de recordar su visita cuando vuelva a navegar por esa página.</p>
+
+                <h3>2. Tipos de cookies utilizadas en esta web</h3>
+                <ul>
+                    <li><strong>Cookies técnicas:</strong> Son aquellas que permiten al usuario la navegación a través de la página web y la utilización de las diferentes opciones o servicios que en ella existan.</li>
+                    <li><strong>Cookies de análisis:</strong> Son aquellas que permiten cuantificar el número de usuarios y así realizar la medición y análisis estadístico de la utilización que hacen los usuarios del servicio ofertado.</li>
+                </ul>
+
+                <h3>3. Aceptación y Rechazo</h3>
+                <p>Al acceder a este sitio web por primera vez, verá un aviso donde se le informa de la utilización de las cookies y donde puede consultar esta política de cookies. Puede cambiar la configuración de su navegador para rechazar las cookies, aunque esto puede afectar al correcto funcionamiento de la página.</p>
+            </div>
         </div>
     </main>
-    
-    <footer>
-        <div class="footer-col">
+
+    <footer class="legal-footer">
+        <div class="container">
             <div>© 2025 Ecentia Marketing</div>
             <div class="legal-links">
-                <a href="aviso-legal.html">Aviso Legal</a> | <a href="politica-privacidad.html">Política de Privacidad</a> | <a href="politica-cookies.html">Política de Cookies</a>
+                <a href="aviso-legal.html">Aviso Legal</a> | 
+                <a href="politica-privacidad.html">Privacidad</a> | 
+                <a href="politica-cookies.html">Cookies</a>
             </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

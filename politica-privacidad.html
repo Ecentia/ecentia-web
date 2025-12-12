@@ -5,48 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Privacidad - Ecentia</title>
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="legal-styles.css">
 </head>
-<body>
-    <header>
-        <div class="logo"><a href="/" style="text-decoration: none; color: inherit;"><h3>Ecentia<span class="logo-dot">.</span></h3></a></div>
-        <div class="header-actions"><a href="/" class="btn-ghost">Volver al Inicio</a></div>
+<body class="legal-body loading">
+
+    <div class="preloader">
+        <div class="loader-text">LEGAL</div>
+        <div class="loader-bar"><div class="bar-fill"></div></div>
+    </div>
+    <div class="noise-overlay"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+
+    <header class="legal-header fade-in">
+        <div class="logo">
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <h3>Ecentia<span class="logo-dot">.</span></h3>
+            </a>
+        </div>
+        <div class="header-actions">
+            <a href="/" class="btn-ghost">Volver al Inicio</a>
+        </div>
     </header>
 
-    <main class="legal-main">
-        <h1 style="font-size: 3rem; text-align: left; opacity: 1; transform: none;">Política de Privacidad</h1>
-        <div class="legal-content">
-            <p>En Ecentia Marketing nos tomamos muy en serio la privacidad de sus datos. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos su información personal.</p>
-            
-            <h3>1. Responsable del Tratamiento</h3>
-            <p>Ecentia Marketing (Sevilla, España). Email de contacto: ecentiaseo@gmail.com.</p>
+    <main class="legal-main fade-in">
+        
+        <div class="legal-title-header">
+            <h1>Centro Legal</h1>
+            <p style="color: var(--text-muted);">Transparencia y confianza.</p>
+        </div>
 
-            <h3>2. Finalidad del tratamiento</h3>
-            <p>Tratamos la información que nos facilitan las personas interesadas con el fin de:</p>
-            <ul>
-                <li>Gestionar el envío de la información que nos soliciten.</li>
-                <li>Prestar los servicios contratados.</li>
-                <li>Enviar comunicaciones comerciales sobre nuestros servicios (si ha dado su consentimiento explícito).</li>
-            </ul>
+        <div class="legal-grid">
+            <aside class="legal-sidebar">
+                <h3>Documentación</h3>
+                <a href="aviso-legal.html" class="legal-nav-link">
+                    Aviso Legal <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="politica-privacidad.html" class="legal-nav-link active">
+                    Privacidad <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="politica-cookies.html" class="legal-nav-link">
+                    Cookies <i class="fas fa-chevron-right"></i>
+                </a>
+            </aside>
 
-            <h3>3. Legitimación</h3>
-            <p>La base legal para el tratamiento de sus datos es la ejecución del contrato de servicios o el consentimiento del interesado (por ejemplo, al rellenar el formulario de contacto).</p>
+            <div class="legal-document">
+                <h2>Política de Privacidad</h2>
+                <p>En Ecentia Marketing nos tomamos muy en serio la privacidad de sus datos. Esta Política de Privacidad describe cómo recopilamos, usamos y protegemos su información personal.</p>
+                
+                <h3>1. Responsable del Tratamiento</h3>
+                <p>Ecentia Marketing (Sevilla, España). Email de contacto: ecentiaseo@gmail.com.</p>
 
-            <h3>4. Destinatarios</h3>
-            <p>Los datos no se comunicarán a terceros, salvo obligación legal.</p>
+                <h3>2. Finalidad del tratamiento</h3>
+                <p>Tratamos la información que nos facilitan las personas interesadas con el fin de:</p>
+                <ul>
+                    <li>Gestionar el envío de la información que nos soliciten.</li>
+                    <li>Prestar los servicios contratados.</li>
+                    <li>Enviar comunicaciones comerciales sobre nuestros servicios (si ha dado su consentimiento explícito).</li>
+                </ul>
+
+                <h3>3. Legitimación</h3>
+                <p>La base legal para el tratamiento de sus datos es la ejecución del contrato de servicios o el consentimiento del interesado (por ejemplo, al rellenar el formulario de contacto).</p>
+
+                <h3>4. Destinatarios</h3>
+                <p>Los datos no se comunicarán a terceros, salvo obligación legal.</p>
+            </div>
         </div>
     </main>
-    
-    <footer>
-        <div class="footer-col">
+
+    <footer class="legal-footer">
+        <div class="container">
             <div>© 2025 Ecentia Marketing</div>
             <div class="legal-links">
-                <a href="aviso-legal.html">Aviso Legal</a> | <a href="politica-privacidad.html">Política de Privacidad</a> | <a href="politica-cookies.html">Política de Cookies</a>
+                <a href="aviso-legal.html">Aviso Legal</a> | 
+                <a href="politica-privacidad.html">Privacidad</a> | 
+                <a href="politica-cookies.html">Cookies</a>
             </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

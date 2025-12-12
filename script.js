@@ -103,4 +103,49 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    const contactForm = document.getElementById("main-contact-form");
+    
+    if (contactForm) {
+        const btn = document.getElementById("submit-btn");
+        const originalBtnContent = btn.innerHTML;
+
+        contactForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const data = new FormData(event.target);
+            
+            // Estado de carga
+            btn.innerHTML = '<span>Enviando...</span> <i class="fas fa-spinner fa-spin"></i>';
+            btn.style.opacity = '0.8';
+            btn.disabled = true;
+
+            fetch(event.target.action, {
+                method: contactForm.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    btn.innerHTML = '<span>¡Mensaje Enviado!</span> <i class="fas fa-check"></i>';
+                    btn.classList.add('btn-success');
+                    contactForm.reset();
+                } else {
+                    btn.innerHTML = '<span>Error al enviar</span> <i class="fas fa-times"></i>';
+                    btn.classList.add('btn-error');
+                }
+            }).catch(error => {
+                btn.innerHTML = '<span>Error de conexión</span> <i class="fas fa-wifi"></i>';
+                btn.classList.add('btn-error');
+            }).finally(() => {
+          
+                setTimeout(() => {
+                    if (btn.classList.contains('btn-success') || btn.classList.contains('btn-error')) {
+                        btn.innerHTML = originalBtnContent;
+                        btn.classList.remove('btn-success', 'btn-error');
+                        btn.style.opacity = '1';
+                        btn.disabled = false;
+                    }
+                }, 4000);
+            });
+        });
+    }
 });

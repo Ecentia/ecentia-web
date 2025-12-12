@@ -5,46 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aviso Legal - Ecentia</title>
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <div class="logo"><a href="/" style="text-decoration: none; color: inherit;"><h3>Ecentia<span class="logo-dot">.</span></h3></a></div>
-        <div class="header-actions"><a href="/" class="btn-ghost">Volver al Inicio</a></div>
-    </header>
     
-    <main class="legal-main">
-        <h1 style="font-size: 3rem; text-align: left; opacity: 1; transform: none;">Aviso Legal</h1>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="legal-styles.css">
+</head>
+<body class="legal-body loading">
+
+    <div class="preloader">
+        <div class="loader-text">LEGAL</div>
+        <div class="loader-bar"><div class="bar-fill"></div></div>
+    </div>
+    <div class="noise-overlay"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-circle"></div>
+
+    <header class="legal-header fade-in">
+        <div class="logo">
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <h3>Ecentia<span class="logo-dot">.</span></h3>
+            </a>
+        </div>
+        <div class="header-actions">
+            <a href="/" class="btn-ghost">Volver al Inicio</a>
+        </div>
+    </header>
+
+    <main class="legal-main fade-in">
         
-        <div class="legal-content">
-            <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSICE), a continuación se exponen los datos identificativos de la empresa:</p>
-            
-            <h3>1. Datos Identificativos</h3>
-            <ul>
-                <li><strong>Nombre comercial:</strong> Ecentia Marketing</li>
-                <li><strong>Domicilio social:</strong> Sevilla, España</li>
-                <li><strong>Email:</strong> ecentiaseo@gmail.com</li>
-                <li><strong>Actividad:</strong> Servicios de marketing digital, diseño web y desarrollo.</li>
-            </ul>
+        <div class="legal-title-header">
+            <h1>Centro Legal</h1>
+            <p style="color: var(--text-muted);">Transparencia y confianza.</p>
+        </div>
 
-            <h3>2. Objeto</h3>
-            <p>El presente sitio web tiene por objeto facilitar al público en general el conocimiento de las actividades que realiza esta empresa y de los productos y servicios que presta.</p>
+        <div class="legal-grid">
+            <aside class="legal-sidebar">
+                <h3>Documentación</h3>
+                <a href="aviso-legal.html" class="legal-nav-link active">
+                    Aviso Legal <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="politica-privacidad.html" class="legal-nav-link">
+                    Privacidad <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="politica-cookies.html" class="legal-nav-link">
+                    Cookies <i class="fas fa-chevron-right"></i>
+                </a>
+            </aside>
 
-            <h3>3. Propiedad Intelectual e Industrial</h3>
-            <p>Los derechos de propiedad intelectual del contenido de las páginas web, su diseño gráfico y códigos son titularidad de Ecentia Marketing y, por tanto, queda prohibida su reproducción, distribución, comunicación pública, transformación o cualquier otra actividad que se pueda realizar con los contenidos de sus páginas web ni aun citando las fuentes, salvo consentimiento por escrito de Ecentia Marketing.</p>
+            <div class="legal-document">
+                <h2>Aviso Legal</h2>
+                <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSICE), a continuación se exponen los datos identificativos de la empresa:</p>
+                
+                <h3>1. Datos Identificativos</h3>
+                <ul>
+                    <li><strong>Nombre comercial:</strong> Ecentia Marketing</li>
+                    <li><strong>Domicilio social:</strong> Sevilla, España</li>
+                    <li><strong>Email:</strong> ecentiaseo@gmail.com</li>
+                    <li><strong>Actividad:</strong> Servicios de marketing digital, diseño web y desarrollo.</li>
+                </ul>
+
+                <h3>2. Objeto</h3>
+                <p>El presente sitio web tiene por objeto facilitar al público en general el conocimiento de las actividades que realiza esta empresa y de los productos y servicios que presta.</p>
+
+                <h3>3. Propiedad Intelectual e Industrial</h3>
+                <p>Los derechos de propiedad intelectual del contenido de las páginas web, su diseño gráfico y códigos son titularidad de Ecentia Marketing.</p>
+            </div>
         </div>
     </main>
 
-    <footer>
-        <div class="footer-col">
+    <footer class="legal-footer">
+        <div class="container">
             <div>© 2025 Ecentia Marketing</div>
             <div class="legal-links">
-                <a href="aviso-legal.html">Aviso Legal</a> | <a href="politica-privacidad.html">Política de Privacidad</a> | <a href="politica-cookies.html">Política de Cookies</a>
+                <a href="aviso-legal.html">Aviso Legal</a> | 
+                <a href="politica-privacidad.html">Privacidad</a> | 
+                <a href="politica-cookies.html">Cookies</a>
             </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
