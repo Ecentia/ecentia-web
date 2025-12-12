@@ -100,7 +100,18 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 .btn-ghost:hover { color: var(--text-color); border-color: var(--white); }
 
 /* --- 5. HERO SECTION --- */
-.hero-section { height: 100vh; min-height: 700px; display: flex; align-items: center; position: relative; overflow: hidden; }
+.hero-section { 
+    /* Cambiamos height fijo por min-height para evitar cortes */
+    min-height: 100vh; 
+    width: 100%;
+    display: flex; 
+    align-items: center; /* Centrado vertical */
+    justify-content: center;
+    position: relative; 
+    overflow: hidden; 
+    padding-top: 120px; /* IMPORTANTE: Espacio extra arriba para que no choque con el logo */
+    padding-bottom: 50px;
+}
 .hero-bg-glow {
     position: absolute; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-color) 0%, transparent 60%);
     opacity: 0.15; filter: blur(80px); top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -110,11 +121,17 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 
 .container { width: 100%; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--gutter); }
 
+.fluid-height { height: 100%; display: flex; flex-direction: column; justify-content: center; }
+
 .mega-title {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(3.5rem, 11vw, 10rem);
-    line-height: 0.9; font-weight: 800; text-transform: uppercase;
+    /* Reducimos ligeramente el máximo (de 10rem a 9rem) y el vw (de 11vw a 10vw) para asegurar que quepa */
+    font-size: clamp(3rem, 10vw, 9rem);
+    line-height: 1.0; /* Aumentado de 0.9 a 1.0 para que las letras no se monten tanto */
+    font-weight: 800; text-transform: uppercase;
     color: var(--white); margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
 }
 .line { overflow: hidden; display: block; }
 .line.indent { margin-left: 10vw; }
