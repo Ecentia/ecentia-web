@@ -30,7 +30,7 @@ body.light-mode {
 }
 
 /* Reset y Base */
-* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* Cursor personalizado */ }
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* Cursor personalizado por defecto */ }
 
 html { scroll-behavior: smooth; font-size: 16px; }
 
@@ -53,9 +53,18 @@ body.loading { overflow: hidden; height: 100vh; }
     pointer-events: none; z-index: 900; opacity: 0.5; mix-blend-mode: overlay;
 }
 
+/* [FIX MÓVIL] Preloader mejorado para cubrir toda la pantalla en iOS */
 .preloader {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--bg-color); z-index: 9999;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+    bottom: 0; /* Forzamos bottom 0 */
+    width: 100%; 
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Altura dinámica real para móviles */
+    background: var(--bg-color); 
+    z-index: 99999; /* Z-index extremo */
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     transition: transform 0.8s var(--ease-out-expo);
 }
@@ -76,6 +85,12 @@ body.loaded .preloader { transform: translateY(-100%); }
 body.hovering .cursor-circle { width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-color: transparent; backdrop-filter: blur(2px); }
 body.hovering .cursor-dot { width: 4px; height: 4px; }
 
+/* [FIX MÓVIL] Ocultar cursor en dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-dot, .cursor-circle { display: none !important; }
+    * { cursor: auto !important; } /* Restaurar cursor nativo por si acaso */
+}
+
 /* --- 4. NAVIGATION & HEADER --- */
 .nav-floating {
     position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
@@ -89,7 +104,7 @@ body.hovering .cursor-dot { width: 4px; height: 4px; }
 .nav-items a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: var(--white); transition: 0.3s; }
 .nav-items a:hover::after { width: 100%; }
 
-/* ESTILOS DEL HEADER (Importante para páginas legales) */
+/* HEADER (Páginas Legales) */
 header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; width: 100%; z-index: 10; position: relative; }
 .logo { font-weight: 700; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
 .logo a { text-decoration: none; display: flex; align-items: center; color: inherit; }
@@ -101,17 +116,17 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 
 /* --- 5. HERO SECTION --- */
 .hero-section { 
-    /* Cambiamos height fijo por min-height para evitar cortes */
-    min-height: 100vh; 
+    min-height: 100vh; /* Altura mínima pantalla completa */
     width: 100%;
     display: flex; 
-    align-items: center; /* Centrado vertical */
+    align-items: center; 
     justify-content: center;
     position: relative; 
     overflow: hidden; 
-    padding-top: 120px; /* IMPORTANTE: Espacio extra arriba para que no choque con el logo */
+    padding-top: 100px; /* Evita que el texto choque con el logo */
     padding-bottom: 50px;
 }
+
 .hero-bg-glow {
     position: absolute; width: 800px; height: 800px; background: radial-gradient(circle, var(--accent-color) 0%, transparent 60%);
     opacity: 0.15; filter: blur(80px); top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -125,13 +140,11 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 
 .mega-title {
     font-family: 'Syne', sans-serif;
-    /* Reducimos ligeramente el máximo (de 10rem a 9rem) y el vw (de 11vw a 10vw) para asegurar que quepa */
     font-size: clamp(3rem, 10vw, 9rem);
-    line-height: 1.0; /* Aumentado de 0.9 a 1.0 para que las letras no se monten tanto */
+    line-height: 1.0; 
     font-weight: 800; text-transform: uppercase;
     color: var(--white); margin-bottom: 40px;
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 2;
 }
 .line { overflow: hidden; display: block; }
 .line.indent { margin-left: 10vw; }
@@ -163,7 +176,7 @@ body.loaded .reveal-text { transform: translateY(0); }
 .section-title { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 700; }
 .section-number { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--gray); }
 
-.project-list { display: flex; flex-direction: column; gap: 150px; } /* Añadido gap */
+.project-list { display: flex; flex-direction: column; gap: 150px; }
 .project-item { display: flex; gap: 60px; align-items: center; }
 .project-item.reverse { flex-direction: row-reverse; }
 
@@ -177,32 +190,19 @@ body.loaded .reveal-text { transform: translateY(0); }
 .project-visual { flex: 1.5; height: 500px; position: relative; border-radius: 10px; overflow: hidden; transform-origin: center; transition: transform 0.5s; }
 .visual-inner { 
     width: 100%; height: 100%; transition: transform 0.6s; display: flex; align-items: center; justify-content: center; 
-    background-color: #1a1a1a; /* Fondo neutro por si la imagen no llena */
+    background-color: #1a1a1a; 
 }
 .project-visual:hover { transform: scale(0.98); }
 .project-visual:hover .visual-inner { transform: scale(1.1); }
 
-/* BOTÓN IR A LA WEB (Cuadrado Blanco) */
 .overlay-reveal { 
     opacity: 0; 
-    font-family: 'Syne', sans-serif; 
-    font-weight: 700; 
-    font-size: 1rem; 
-    color: #000000;         
-    background: #ffffff;    
-    padding: 15px 30px;     
-    border-radius: 4px;     
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
-    transition: 0.3s; 
-    z-index: 2; 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-    transform: translateY(20px); 
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; 
+    color: #000000; background: #ffffff; padding: 15px 30px; border-radius: 4px;     
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: 0.3s; z-index: 2; 
+    text-transform: uppercase; letter-spacing: 1px; transform: translateY(20px); 
 }
-.project-visual:hover .overlay-reveal { 
-    opacity: 1; 
-    transform: translateY(0);
-}
+.project-visual:hover .overlay-reveal { opacity: 1; transform: translateY(0); }
 
 .center-btn { text-align: center; margin-top: 50px; }
 .btn-outline { padding: 15px 40px; border: 1px solid rgba(255,255,255,0.2); color: var(--white); text-decoration: none; border-radius: 50px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: 0.3s; display: inline-block; }
@@ -230,13 +230,7 @@ body.loaded .reveal-text { transform: translateY(0); }
 /* --- 9. FOOTER & CONTACTO --- */
 .footer-section { padding: 120px 0 50px; border-top: 1px solid var(--border-color); background: var(--bg-color); }
 
-.contact-grid { 
-    display: flex; 
-    gap: 60px; 
-    align-items: flex-start; 
-    margin-bottom: 80px;
-    text-align: left; 
-}
+.contact-grid { display: flex; gap: 60px; align-items: flex-start; margin-bottom: 80px; text-align: left; }
 
 .contact-text { flex: 1; }
 .cta-title { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.1; margin-bottom: 30px; }
@@ -245,48 +239,28 @@ body.loaded .reveal-text { transform: translateY(0); }
 .contact-desc { color: var(--gray); font-size: 1.1rem; max-width: 450px; margin-bottom: 30px; line-height: 1.6; }
 .location-info { font-family: 'Syne', sans-serif; font-weight: 600; color: var(--white); display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
 
-/* Formulario */
 .contact-form-wrapper {
-    flex: 1;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-    padding: 40px;
-    border-radius: 20px;
-    position: relative;
+    flex: 1; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+    padding: 40px; border-radius: 20px; position: relative;
 }
 
 .form-row { display: flex; gap: 20px; }
 .form-group { margin-bottom: 25px; width: 100%; }
 
 .form-group label {
-    display: block;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.8rem;
-    color: var(--gray);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    display: block; font-family: 'Syne', sans-serif; font-size: 0.8rem; color: var(--gray);
+    margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;
 }
 
 .form-group input, .form-group textarea {
-    width: 100%;
-    background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 15px 20px;
-    border-radius: 12px;
-    color: var(--white);
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    transition: all 0.3s;
+    width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
+    padding: 15px 20px; border-radius: 12px; color: var(--white); font-family: 'Inter', sans-serif; font-size: 1rem; transition: all 0.3s;
 }
 
 .form-group textarea { height: 120px; resize: vertical; }
-
 .form-group input:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 15px rgba(139, 33, 222, 0.15);
-    background: rgba(139, 33, 222, 0.05);
+    outline: none; border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(139, 33, 222, 0.15); background: rgba(139, 33, 222, 0.05);
 }
 
 .form-privacy { display: flex; align-items: center; gap: 10px; margin-bottom: 30px; font-size: 0.85rem; color: var(--gray); }
@@ -297,15 +271,13 @@ body.loaded .reveal-text { transform: translateY(0); }
     background: var(--accent-color); color: white; padding: 18px 40px; font-size: 1rem;
     border-radius: 100px; border: none; font-weight: 700; cursor: pointer;
     display: inline-flex; align-items: center; justify-content: center; gap: 15px;
-    transition: 0.3s; width: 100%; text-transform: uppercase; letter-spacing: 1px;
-    font-family: 'Syne', sans-serif;
+    transition: 0.3s; width: 100%; text-transform: uppercase; letter-spacing: 1px; font-family: 'Syne', sans-serif;
 }
 .btn-big:hover { transform: translateY(-3px); background: #9c2ef0; box-shadow: 0 10px 30px rgba(139, 33, 222, 0.3); }
 
 .btn-success { background: #10b981 !important; pointer-events: none; }
 .btn-error { background: #ef4444 !important; }
 
-/* Pie de página (Footer Bottom) */
 .footer-bottom { margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; display: flex; justify-content: space-between; text-align: left; }
 .col h4 { font-family: 'Syne'; margin-bottom: 10px; font-size: 1.2rem; }
 .col p { color: var(--gray); font-size: 0.9rem; }
@@ -328,26 +300,27 @@ body.loaded .reveal-text { transform: translateY(0); }
 
 @media (max-width: 768px) {
     /* 1. NAVEGACIÓN */
-    .nav-floating { width: 90%; padding: 15px 20px; justify-content: center; }
+    .nav-floating { width: 95%; padding: 15px 20px; justify-content: center; }
     .nav-items { display: none; }
     
-    /* HEADER (Para móviles) */
+    /* HEADER (Para páginas legales en móviles) */
     header { padding: 20px; flex-direction: column; gap: 15px; }
     .header-actions { width: 100%; justify-content: center; }
     .btn-ghost { width: 100%; text-align: center; }
 
-    /* 2. HERO & TEXTOS GIGANTES */
-    .mega-title { font-size: 13vw; }
+    /* 2. HERO & TEXTOS GIGANTES [FIX MÓVIL] */
+    .mega-title { font-size: 13vw; /* Ajuste para que quepa bien en pantalla */ margin-top: 20px; }
     .line.indent { margin-left: 0; }
+    
     .hero-footer { flex-direction: column; align-items: flex-start; gap: 30px; }
-    .hero-desc { font-size: 1rem; }
+    .hero-desc { font-size: 1rem; width: 100%; }
 
     /* 3. PROYECTOS (Stack vertical) */
-    .project-list { gap: 100px; }
+    .project-list { gap: 80px; }
     .project-item, .project-item.reverse { flex-direction: column-reverse; gap: 30px; }
     .project-visual { width: 100%; height: 300px; }
     .project-info { text-align: left; padding: 0 10px; }
-    .project-info h3 { font-size: 2.5rem; }
+    .project-info h3 { font-size: 2.2rem; }
 
     /* 4. MARQUEE */
     .marquee-part { font-size: 2.5rem; }
@@ -361,6 +334,6 @@ body.loaded .reveal-text { transform: translateY(0); }
     .contact-form-wrapper { width: 100%; padding: 25px; }
     .form-row { flex-direction: column; gap: 0; }
     
-    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; margin-top: 60px; }
+    .footer-bottom { flex-direction: column; gap: 30px; text-align: center; margin-top: 60px; }
     .links { justify-content: center; }
 }
