@@ -6,6 +6,9 @@ body.legal-body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    /* FIX CRÍTICO SCROLL: Restablece el scroll natural */
+    overflow-y: auto !important;
+    height: auto !important;
 }
 
 /* Ajuste del Header para páginas legales (más compacto) */

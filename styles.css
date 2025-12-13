@@ -1,5 +1,5 @@
 :root {
-    /* Variables Modo Oscuro (Por defecto) */
+    /* Variables Modo Oscuro */
     --bg-color: #050510;
     --card-bg: rgba(20, 20, 40, 0.7);
     --primary-gradient: linear-gradient(90deg, #a855f7, #6366f1);
@@ -30,7 +30,7 @@ body.light-mode {
 }
 
 /* Reset y Base */
-* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; /* Cursor personalizado por defecto */ }
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
 html { scroll-behavior: smooth; font-size: 16px; }
 
@@ -38,7 +38,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip; 
     position: relative;
     -webkit-font-smoothing: antialiased;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -53,42 +53,65 @@ body.loading { overflow: hidden; height: 100vh; }
     pointer-events: none; z-index: 900; opacity: 0.5; mix-blend-mode: overlay;
 }
 
-/* [FIX MÓVIL] Preloader mejorado para cubrir toda la pantalla en iOS */
+/* Preloader que cubre todo en móvil */
 .preloader {
     position: fixed; 
-    top: 0; 
-    left: 0; 
-    right: 0;
-    bottom: 0; /* Forzamos bottom 0 */
+    top: 0; left: 0; bottom: 0; right: 0; /* Inset 0 fuerza pantalla completa */
     width: 100%; 
-    height: 100vh; /* Fallback */
-    height: 100dvh; /* Altura dinámica real para móviles */
+    height: 100dvh; 
     background: var(--bg-color); 
-    z-index: 99999; /* Z-index extremo */
+    z-index: 99999; 
     display: flex; flex-direction: column; justify-content: center; align-items: center;
     transition: transform 0.8s var(--ease-out-expo);
+    overscroll-behavior: none;
 }
 .loader-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2rem; margin-bottom: 20px; letter-spacing: 5px; color: var(--accent-color); }
 .loader-bar { width: 200px; height: 2px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
 .bar-fill { width: 0%; height: 100%; background: var(--white); transition: width 0.5s; }
 body.loaded .preloader { transform: translateY(-100%); }
 
-/* --- 3. CUSTOM CURSOR --- */
+/* --- 3. CUSTOM CURSOR (CORREGIDO) --- */
 .cursor-dot, .cursor-circle {
-    position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 1000;
-    transform: translate(-50%, -50%); transition: transform 0.1s, width 0.3s, height 0.3s, background-color 0.3s;
+    position: fixed; top: 0; left: 0; 
+    border-radius: 50%; pointer-events: none; z-index: 1000;
+    
+    /* Inicialmente invisible para evitar flashes en (0,0) si no hay datos guardados */
+    opacity: 0; 
     mix-blend-mode: difference;
 }
-.cursor-dot { width: 8px; height: 8px; background: var(--white); }
-.cursor-circle { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.5); transition: all 0.15s ease-out; }
 
-body.hovering .cursor-circle { width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-color: transparent; backdrop-filter: blur(2px); }
+/* Solo el círculo lleva transición suave de movimiento */
+.cursor-circle { 
+    width: 40px; height: 40px; 
+    border: 1px solid rgba(255,255,255,0.5); 
+    transition: width 0.3s, height 0.3s, background-color 0.3s, opacity 0.2s;
+    /* Quitamos 'transform' de la transición CSS para controlarlo 100% por JS sin conflicto */
+}
+
+/* El punto debe ser instantáneo */
+.cursor-dot { 
+    width: 8px; height: 8px; 
+    background: var(--white);
+    transition: opacity 0.2s; 
+}
+
+/* Cuando JS detecta movimiento o restaura posición, se hace visible */
+body.mouse-moved .cursor-dot, 
+body.mouse-moved .cursor-circle {
+    opacity: 1;
+}
+
+body.hovering .cursor-circle { 
+    width: 60px; height: 60px; 
+    background: rgba(255,255,255,0.1); 
+    border-color: transparent; backdrop-filter: blur(2px); 
+}
 body.hovering .cursor-dot { width: 4px; height: 4px; }
 
-/* [FIX MÓVIL] Ocultar cursor en dispositivos táctiles */
+/* Ocultar en móvil */
 @media (hover: none) and (pointer: coarse) {
     .cursor-dot, .cursor-circle { display: none !important; }
-    * { cursor: auto !important; } /* Restaurar cursor nativo por si acaso */
+    * { cursor: auto !important; } 
 }
 
 /* --- 4. NAVIGATION & HEADER --- */
@@ -104,7 +127,7 @@ body.hovering .cursor-dot { width: 4px; height: 4px; }
 .nav-items a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: var(--white); transition: 0.3s; }
 .nav-items a:hover::after { width: 100%; }
 
-/* HEADER (Páginas Legales) */
+/* HEADER LEGAL */
 header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; width: 100%; z-index: 10; position: relative; }
 .logo { font-weight: 700; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
 .logo a { text-decoration: none; display: flex; align-items: center; color: inherit; }
@@ -116,14 +139,14 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 
 /* --- 5. HERO SECTION --- */
 .hero-section { 
-    min-height: 100vh; /* Altura mínima pantalla completa */
+    min-height: 100vh;
     width: 100%;
     display: flex; 
     align-items: center; 
     justify-content: center;
     position: relative; 
     overflow: hidden; 
-    padding-top: 100px; /* Evita que el texto choque con el logo */
+    padding-top: 100px;
     padding-bottom: 50px;
 }
 
@@ -201,6 +224,7 @@ body.loaded .reveal-text { transform: translateY(0); }
     color: #000000; background: #ffffff; padding: 15px 30px; border-radius: 4px;     
     box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: 0.3s; z-index: 2; 
     text-transform: uppercase; letter-spacing: 1px; transform: translateY(20px); 
+    text-decoration: none; display: inline-block; 
 }
 .project-visual:hover .overlay-reveal { opacity: 1; transform: translateY(0); }
 
@@ -299,33 +323,32 @@ body.loaded .reveal-text { transform: translateY(0); }
 }
 
 @media (max-width: 768px) {
-    /* 1. NAVEGACIÓN */
+    /* NAVEGACIÓN */
     .nav-floating { width: 95%; padding: 15px 20px; justify-content: center; }
     .nav-items { display: none; }
     
-    /* HEADER (Para páginas legales en móviles) */
+    /* HEADER LEGAL */
     header { padding: 20px; flex-direction: column; gap: 15px; }
     .header-actions { width: 100%; justify-content: center; }
     .btn-ghost { width: 100%; text-align: center; }
 
-    /* 2. HERO & TEXTOS GIGANTES [FIX MÓVIL] */
-    .mega-title { font-size: 13vw; /* Ajuste para que quepa bien en pantalla */ margin-top: 20px; }
+    /* HERO */
+    .mega-title { font-size: 13vw; margin-top: 20px; }
     .line.indent { margin-left: 0; }
-    
     .hero-footer { flex-direction: column; align-items: flex-start; gap: 30px; }
     .hero-desc { font-size: 1rem; width: 100%; }
 
-    /* 3. PROYECTOS (Stack vertical) */
+    /* PROYECTOS */
     .project-list { gap: 80px; }
     .project-item, .project-item.reverse { flex-direction: column-reverse; gap: 30px; }
     .project-visual { width: 100%; height: 300px; }
     .project-info { text-align: left; padding: 0 10px; }
     .project-info h3 { font-size: 2.2rem; }
 
-    /* 4. MARQUEE */
+    /* MARQUEE */
     .marquee-part { font-size: 2.5rem; }
 
-    /* 5. FOOTER & CONTACTO */
+    /* FOOTER */
     .footer-section { padding: 60px 0 30px; }
     .contact-grid { flex-direction: column; gap: 40px; }
     .contact-text { text-align: center; }

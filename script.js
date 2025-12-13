@@ -1,50 +1,83 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. PRELOADER & ENTRADA ---
+    // --- 1. PRELOADER (Carga acelerada) ---
     const body = document.body;
     const barFill = document.querySelector('.bar-fill');
     
-    // Simular carga
     let width = 0;
     const interval = setInterval(() => {
-        width += Math.random() * 10;
+        width += Math.random() * 20; 
         if (width > 100) width = 100;
-        barFill.style.width = width + '%';
+        if(barFill) barFill.style.width = width + '%';
         
         if (width === 100) {
             clearInterval(interval);
             setTimeout(() => {
                 body.classList.add('loaded');
                 body.classList.remove('loading');
-            }, 500);
+            }, 300);
         }
-    }, 100);
+    }, 50);
 
-    // --- 2. CUSTOM CURSOR & MAGNET EFFECT ---
+    // --- 2. CUSTOM CURSOR CON MEMORIA (PERSISTENCIA) ---
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorCircle = document.querySelector('.cursor-circle');
     const magnetTargets = document.querySelectorAll('.magnet-target');
 
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
+    // Recuperar posición guardada o usar valores por defecto fuera de pantalla
+    // Esto evita que empiece en (0,0) si venimos de otra página
+    let savedX = sessionStorage.getItem('cursorX');
+    let savedY = sessionStorage.getItem('cursorY');
 
+    // Si hay datos guardados, empezamos ahí. Si no, fuera de pantalla.
+    let mouseX = savedX ? parseFloat(savedX) : -100;
+    let mouseY = savedY ? parseFloat(savedY) : -100;
+    let cursorX = mouseX;
+    let cursorY = mouseY;
+
+    // Aplicar posición INICIAL INMEDIATA (sin animación)
+    if (savedX && savedY) {
+        body.classList.add('mouse-moved'); // Hacer visible inmediatamente
+        if (cursorDot) cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        if (cursorCircle) cursorCircle.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    }
+
+    // Guardar posición al salir de la página (Navigating away)
+    window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('cursorX', mouseX);
+        sessionStorage.setItem('cursorY', mouseY);
+    });
+
+    // Actualizar coordenadas al mover
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+
+        // Si es la primera vez que se mueve y no estaba visible, hacerlo visible
+        if (!body.classList.contains('mouse-moved')) {
+            body.classList.add('mouse-moved');
+            cursorX = mouseX; 
+            cursorY = mouseY;
+        }
         
-        // El punto sigue al mouse instantáneamente
-        cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        // El punto sigue al instante
+        if (cursorDot) {
+            cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        }
     });
 
-    // El círculo sigue con "lag" (Lerp)
+    // Bucle de animación suave para el círculo
     function animateCursor() {
+        // Lerp (suavizado)
         const dx = mouseX - cursorX;
         const dy = mouseY - cursorY;
         
-        cursorX += dx * 0.1;
-        cursorY += dy * 0.1;
+        cursorX += dx * 0.15; // Velocidad de seguimiento
+        cursorY += dy * 0.15;
         
-        cursorCircle.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+        if (cursorCircle) {
+            cursorCircle.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+        }
         requestAnimationFrame(animateCursor);
     }
     animateCursor();
@@ -55,7 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
         target.addEventListener('mouseleave', () => body.classList.remove('hovering'));
     });
 
-    // --- 3. SPOTLIGHT EFFECT ON CARDS ---
+    // --- 3. RESTO DE FUNCIONES (SPOTLIGHT, SCROLL, ETC) ---
+    // (Se mantienen igual para no romper la web)
+    
     const cardsContainer = document.getElementById('cards-container');
     const cards = document.querySelectorAll('.spotlight-card');
 
@@ -65,16 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
             });
         });
     }
 
-    // --- 4. SCROLL ANIMATIONS (INTERSECTION OBSERVER) ---
     const observerOptions = { threshold: 0.1, rootMargin: "0px" };
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if(entry.isIntersecting) {
@@ -85,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Elementos a animar que no sean el hero (ya animado por clase loaded)
     const fadeElements = document.querySelectorAll('.project-item, .card, .cta-title');
     fadeElements.forEach(el => {
         el.style.opacity = '0';
@@ -94,18 +125,17 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // --- 5. SMOOTH SCROLL ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') return;
+            const targetEl = document.querySelector(targetId);
+            if(targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
         });
     });
 
     const contactForm = document.getElementById("main-contact-form");
-    
     if (contactForm) {
         const btn = document.getElementById("submit-btn");
         const originalBtnContent = btn.innerHTML;
@@ -113,8 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener("submit", async (event) => {
             event.preventDefault();
             const data = new FormData(event.target);
-            
-            // Estado de carga
             btn.innerHTML = '<span>Enviando...</span> <i class="fas fa-spinner fa-spin"></i>';
             btn.style.opacity = '0.8';
             btn.disabled = true;
@@ -125,25 +153,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    btn.innerHTML = '<span>¡Mensaje Enviado!</span> <i class="fas fa-check"></i>';
+                    btn.innerHTML = '<span>¡Enviado!</span> <i class="fas fa-check"></i>';
                     btn.classList.add('btn-success');
                     contactForm.reset();
                 } else {
-                    btn.innerHTML = '<span>Error al enviar</span> <i class="fas fa-times"></i>';
+                    btn.innerHTML = '<span>Error</span> <i class="fas fa-times"></i>';
                     btn.classList.add('btn-error');
                 }
             }).catch(error => {
-                btn.innerHTML = '<span>Error de conexión</span> <i class="fas fa-wifi"></i>';
                 btn.classList.add('btn-error');
             }).finally(() => {
-          
                 setTimeout(() => {
-                    if (btn.classList.contains('btn-success') || btn.classList.contains('btn-error')) {
-                        btn.innerHTML = originalBtnContent;
-                        btn.classList.remove('btn-success', 'btn-error');
-                        btn.style.opacity = '1';
-                        btn.disabled = false;
-                    }
+                    btn.innerHTML = originalBtnContent;
+                    btn.classList.remove('btn-success', 'btn-error');
+                    btn.style.opacity = '1';
+                    btn.disabled = false;
                 }, 4000);
             });
         });
