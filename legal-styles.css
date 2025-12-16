@@ -1,25 +1,70 @@
-/* legal-styles.css */
+/* legal-styles.css - V2.3 (Logo & Mobile Fix) */
 
 /* --- LAYOUT GLOBAL LEGAL --- */
 body.legal-body {
-    background-color: var(--bg-color); /* Asegura fondo oscuro */
+    background-color: var(--bg-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* FIX CRÍTICO SCROLL: Restablece el scroll natural */
     overflow-y: auto !important;
     height: auto !important;
 }
 
-/* Ajuste del Header para páginas legales (más compacto) */
+/* Header Compacto */
 header.legal-header {
     padding: 20px 40px;
-    background: rgba(5, 5, 16, 0.8); /* Fondo semi-transparente */
+    background: rgba(5, 5, 16, 0.9);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255,255,255,0.05);
     position: sticky;
     top: 0;
     z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* --- LOGO FIX (Para que sea igual al Index) --- */
+.logo a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo h3 {
+    font-family: 'Syne', sans-serif; /* Fuente correcta */
+    font-weight: 800; /* Grosor Extra Bold como en el index */
+    font-size: 1.5rem;
+    color: var(--white);
+    margin: 0; /* Elimina márgenes por defecto del h3 */
+    line-height: 1;
+}
+
+.logo-dot {
+    color: var(--accent-color);
+}
+/* ------------------------------------------- */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn-ghost {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+    color: var(--white);
+    border-color: var(--white);
+    background: rgba(255,255,255,0.05);
 }
 
 /* Contenedor principal */
@@ -28,13 +73,14 @@ header.legal-header {
     margin: 60px auto 100px;
     padding: 0 20px;
     width: 100%;
-    flex: 1; /* Empuja el footer hacia abajo si hay poco contenido */
+    flex: 1;
 }
 
 .legal-title-header {
     text-align: center;
     margin-bottom: 60px;
 }
+
 .legal-title-header h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-family: 'Syne', sans-serif;
@@ -52,9 +98,10 @@ header.legal-header {
     align-items: start;
 }
 
+/* Sidebar en Escritorio */
 .legal-sidebar {
     position: sticky;
-    top: 100px; /* Ajustado por el header sticky */
+    top: 120px;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 25px;
@@ -87,13 +134,18 @@ header.legal-header {
     border: 1px solid transparent;
 }
 
+.legal-nav-link i {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
 .legal-nav-link:hover {
     color: var(--white);
     background: rgba(255, 255, 255, 0.05);
 }
 
 .legal-nav-link.active {
-    background: rgba(168, 85, 247, 0.1);
+    background: rgba(168, 85, 247, 0.15);
     border-color: rgba(168, 85, 247, 0.3);
     color: var(--white);
     font-weight: 500;
@@ -110,16 +162,32 @@ header.legal-header {
     line-height: 1.8;
 }
 
-.legal-document h2, .legal-document h3 {
+.legal-document h2 { 
+    font-family: 'Syne', sans-serif;
+    color: var(--white);
+    font-size: 2rem; 
+    border-bottom: 1px solid rgba(255,255,255,0.1); 
+    padding-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.legal-document h3 {
     font-family: 'Syne', sans-serif;
     color: var(--white);
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
 }
-.legal-document h2 { font-size: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+
+.legal-document ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+.legal-document li { margin-bottom: 10px; }
 .legal-document strong { color: var(--white); }
 
-/* Footer específico para legal (más simple) */
+/* Footer Legal */
 .legal-footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 40px 0;
@@ -136,11 +204,65 @@ header.legal-header {
 .legal-footer a { color: var(--gray); text-decoration: none; transition: 0.3s; }
 .legal-footer a:hover { color: var(--accent-color); }
 
-/* Responsive */
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================= */
 @media (max-width: 900px) {
-    .legal-grid { grid-template-columns: 1fr; }
-    .legal-sidebar { position: relative; top: 0; flex-direction: row; overflow-x: auto; padding: 15px; }
-    .legal-nav-link { white-space: nowrap; }
-    .legal-footer .container { flex-direction: column; gap: 20px; text-align: center; }
+    header.legal-header { padding: 15px 20px; }
+    
+    /* Grid a columna única */
+    .legal-grid { 
+        grid-template-columns: 1fr; 
+        gap: 30px;
+    }
+
+    /* Sidebar convertida en Tabs deslizables */
+    .legal-sidebar { 
+        position: sticky;
+        top: 70px; /* Ajustado para estar bajo el header */
+        z-index: 90;
+        
+        flex-direction: row; 
+        overflow-x: auto; 
+        white-space: nowrap;
+        
+        padding: 10px 0 15px 0;
+        background: var(--bg-color); 
+        border: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        border-radius: 0;
+        
+        /* Ocultar scrollbar */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .legal-sidebar::-webkit-scrollbar { display: none; }
+
+    /* Ocultamos título en sidebar móvil */
+    .legal-sidebar h3 { display: none; }
+
+    /* Estilo botones flotantes */
+    .legal-nav-link { 
+        flex-shrink: 0;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 50px;
+        padding: 8px 20px;
+        font-size: 0.85rem;
+        margin-right: 10px;
+    }
+    
+    .legal-nav-link i { display: none; }
+
+    .legal-nav-link.active {
+        background: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+        font-weight: 600;
+    }
+
     .legal-document { padding: 25px; }
+    .legal-title-header h1 { font-size: 2.5rem; }
+    .legal-footer .container { flex-direction: column; gap: 20px; text-align: center; }
 }
