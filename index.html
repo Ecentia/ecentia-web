@@ -245,71 +245,148 @@
         </div>
     </section>
 
-    <footer id="contact" class="footer-section">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-text">
-                    <h2 class="cta-title">
-                        ¿Tienes una idea? <br>
-                        <span class="text-stroke">Hagámosla épica.</span>
-                    </h2>
-                    <p class="contact-desc">
-                        Cuéntanos sobre tu proyecto. Si buscas destacar en Sevilla o en cualquier parte del mundo,
-                        estamos listos.
-                    </p>
-                    <div class="location-info">
-                        <i class="fas fa-map-marker-alt" style="color: var(--accent-color)"></i> Sevilla, España
-                    </div>
+   <section id="contact" class="aurora-contact-section">
+    
+    <div class="aurora-bg">
+        <div class="aurora-light one"></div>
+        <div class="aurora-light two"></div>
+        <div class="aurora-light three"></div>
+    </div>
+
+    <div class="container relative-z">
+        <div class="contact-grid-wrapper">
+            
+            <div class="contact-left-col fade-in-up">
+                
+                <div class="badge-status">
+                    <span class="pulse-dot"></span>
+                    <span>Proyectos Abiertos 2025</span>
                 </div>
 
-                <div class="contact-form-wrapper spotlight-card">
+                <h2 class="cta-title">
+                    ¿Tienes una idea? <br>
+                    <span class="outline-text reveal-text">Hagámosla épica.</span>
+                </h2>
+                
+                <p class="contact-desc-hero">
+                    Estrategia, diseño y tecnología para marcas que no piden permiso. 
+                    Rellena el formulario para despegar o usa la vía rápida por WhatsApp.
+                </p>
+
+                <a href="https://wa.me/34722625288" target="_blank" class="whatsapp-premium-card magnet-target">
+                    <div class="wa-glow-effect"></div>
+                    <div class="wa-icon-container">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="online-badge"></span>
+                    </div>
+                    <div class="wa-info">
+                        <span class="wa-label">Soporte Directo</span>
+                        <span class="wa-phone">+34 722 625 288</span>
+                        <span class="wa-status">Disponible ahora</span>
+                    </div>
+                    <div class="wa-action-icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <div class="mail-direct">
+                    <a href="mailto:ecentiaseo@gmail.com" class="mail-link hover-link">
+                        <i class="far fa-envelope-open"></i> ecentiaseo@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-right-col fade-in-up delay-1">
+                <div class="glass-form-card spotlight-card">
                     <form id="main-contact-form" action="https://formspree.io/f/xnnwwebz" method="POST">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                        
+                        <div class="form-header">
+                            <h3>Configura tu proyecto</h3>
+                            <div class="step-indicator">01/01</div>
+                        </div>
+
+                        <div class="input-block">
+                            <label class="block-label">¿Qué buscas?</label>
+                            <div class="neon-tags">
+                                <label class="neon-checkbox">
+                                    <input type="checkbox" name="interes[]" value="Web Premium">
+                                    <span class="neon-btn">Diseño Web</span>
+                                </label>
+                                <label class="neon-checkbox">
+                                    <input type="checkbox" name="interes[]" value="E-Commerce">
+                                    <span class="neon-btn">E-Commerce</span>
+                                </label>
+                                <label class="neon-checkbox">
+                                    <input type="checkbox" name="interes[]" value="SEO">
+                                    <span class="neon-btn">SEO / Google</span>
+                                </label>
+                                <label class="neon-checkbox">
+                                    <input type="checkbox" name="interes[]" value="Automatizacion">
+                                    <span class="neon-btn">Automatización IA</span>
+                                </label>
                             </div>
-                            <div class="form-group">
-                                <label for="empresa">Empresa</label>
-                                <input type="text" id="empresa" name="empresa" placeholder="Tu marca">
+                        </div>
+
+                        <div class="fields-grid">
+                            <div class="cyber-input-group">
+                                <input type="text" id="nombre" name="nombre" required placeholder=" " class="cyber-input">
+                                <span class="cyber-bar"></span>
+                                <label for="nombre">Tu Nombre</label>
+                            </div>
+                            <div class="cyber-input-group">
+                                <input type="text" id="empresa" name="empresa" placeholder=" " class="cyber-input">
+                                <span class="cyber-bar"></span>
+                                <label for="empresa">Empresa / Web</label>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="hola@tuempresa.com">
+
+                        <div class="cyber-input-group">
+                            <input type="email" id="email" name="email" required placeholder=" " class="cyber-input">
+                            <span class="cyber-bar"></span>
+                            <label for="email">Email Profesional</label>
                         </div>
-                        <div class="form-group">
-                            <label for="mensaje">Mensaje</label>
-                            <textarea id="mensaje" name="mensaje" required
-                                placeholder="¿En qué podemos ayudarte?"></textarea>
+
+                        <div class="cyber-input-group">
+                            <textarea id="mensaje" name="mensaje" required placeholder=" " class="cyber-input"></textarea>
+                            <span class="cyber-bar"></span>
+                            <label for="mensaje">Cuéntanos tu visión...</label>
                         </div>
-                        <div class="form-privacy">
-                            <input type="checkbox" id="privacy" name="privacy" required>
-                            <label for="privacy">Acepto la <a href="politica-privacidad.html">Política de
-                                    privacidad</a></label>
+
+                        <div class="form-bottom-row">
+                            <label class="terms-check">
+                                <input type="checkbox" name="privacy" required>
+                                <span class="check-box-visual"></span>
+                                <span class="terms-text">He leído la <a href="politica-privacidad.html">política de privacidad</a></span>
+                            </label>
+
+                            <button type="submit" class="cyber-submit-btn magnet-target" id="submit-btn">
+                                <span class="btn-content">ENVIAR</span>
+                            </button>
                         </div>
-                        <button type="submit" class="btn-big magnet-target" id="submit-btn">
-                            <span>Enviar Mensaje</span> <i class="fas fa-paper-plane"></i>
-                        </button>
                     </form>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <div class="col">
-                    <h4>Ecentia.</h4>
-                    <p>© 2025 Ecentia Marketing</p>
-                </div>
-                <div class="col links">
-                    <a target="_blank" href="https://www.instagram.com/ecentiamarketing/"
-                        class="hover-link">Instagram</a>
-                    <a target="_blank" href="https://www.linkedin.com/company/ecentia-marketing/"
-                        class="hover-link">LinkedIn</a>
-                    <a href="aviso-legal.html" class="hover-link">Legal</a>
-                </div>
-            </div>
         </div>
-    </footer>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="copyright">
+            <h4>Ecentia.</h4>
+            <p>© 2025 Ecentia Marketing. Sevilla.</p>
+        </div>
+        <div class="footer-nav">
+            <a href="aviso-legal.html">Legal</a>
+            <a href="politica-privacidad.html">Privacidad</a>
+            <a href="politica-cookies.html">Cookies</a>
+        </div>
+        <div class="socials">
+            <a target="_blank" href="https://www.instagram.com/ecentiamarketing/"><i class="fab fa-instagram"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/company/ecentia-marketing/"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+</footer>
 
     <script src="script.js"></script>
 </body>
