@@ -70,48 +70,57 @@ body.loading { overflow: hidden; height: 100vh; }
 .bar-fill { width: 0%; height: 100%; background: var(--white); transition: width 0.5s; }
 body.loaded .preloader { transform: translateY(-100%); }
 
-/* --- 3. CUSTOM CURSOR (CORREGIDO) --- */
-.cursor-dot, .cursor-circle {
-    position: fixed; top: 0; left: 0; 
-    border-radius: 50%; pointer-events: none; z-index: 1000;
-    
-    /* Inicialmente invisible para evitar flashes en (0,0) si no hay datos guardados */
-    opacity: 0; 
-    mix-blend-mode: difference;
+/* --- 3. SPECTACULAR CYBER CURSOR --- */
+body {
+    cursor: none; /* Ocultar cursor nativo */
 }
 
-/* Solo el círculo lleva transición suave de movimiento */
-.cursor-circle { 
-    width: 40px; height: 40px; 
-    border: 1px solid rgba(255,255,255,0.5); 
-    transition: width 0.3s, height 0.3s, background-color 0.3s, opacity 0.2s;
-    /* Quitamos 'transform' de la transición CSS para controlarlo 100% por JS sin conflicto */
+/* Lienzo para las partículas (Fondo) */
+#cursor-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998; /* Por debajo del menú, encima del contenido */
+    mix-blend-mode: screen; /* Efecto de luz */
 }
 
-/* El punto debe ser instantáneo */
-.cursor-dot { 
-    width: 8px; height: 8px; 
-    background: var(--white);
-    transition: opacity 0.2s; 
+/* El puntero principal (La mira técnica) */
+#main-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--white);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%) rotate(45deg); /* Diamante */
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+                height 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+                background-color 0.3s,
+                border-color 0.3s;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-/* Cuando JS detecta movimiento o restaura posición, se hace visible */
-body.mouse-moved .cursor-dot, 
-body.mouse-moved .cursor-circle {
-    opacity: 1;
+/* Estado Hover (Magnético/Activo) */
+body.hovering #main-cursor {
+    width: 50px;
+    height: 50px;
+    background: rgba(168, 85, 247, 0.1); /* Tinte violeta */
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px var(--accent-color);
+    transform: translate(-50%, -50%) rotate(0deg); /* Se convierte en cuadrado */
 }
 
-body.hovering .cursor-circle { 
-    width: 60px; height: 60px; 
-    background: rgba(255,255,255,0.1); 
-    border-color: transparent; backdrop-filter: blur(2px); 
-}
-body.hovering .cursor-dot { width: 4px; height: 4px; }
-
-/* Ocultar en móvil */
+/* Ocultar en móvil / táctil */
 @media (hover: none) and (pointer: coarse) {
-    .cursor-dot, .cursor-circle { display: none !important; }
-    * { cursor: auto !important; } 
+    #cursor-canvas, #main-cursor { display: none !important; }
+    body { cursor: auto; }
 }
 
 /* --- 4. NAVIGATION & HEADER --- */
